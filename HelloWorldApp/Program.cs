@@ -25,7 +25,7 @@ namespace HelloWorldApp
             nationalities.Sort();
             foreach (string nationality in nationalities)
             {
-                Console.WriteLine("Hello, " + nationality);
+                Console.WriteLine(nationality);
             }
         }
     }
