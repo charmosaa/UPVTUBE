@@ -16,7 +16,7 @@ namespace HelloWorldApp
                 nationalities = new List<string>(){
                  "Polish",
                  "Mongolian",
-                 "Russian",
+                 "Italian",
                  "Austrian",
                  "Brazilian"
                 };
