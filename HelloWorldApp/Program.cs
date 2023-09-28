@@ -11,9 +11,10 @@ namespace HelloWorldApp
         static void Main(string[] args)
         {
             List<string> nationalities;
-            void initList(){
+            void initList()
+            {
                 nationalities = new List<string>(){
-                 "Australian",
+                 "Spanish",
                  "Mongolian",
                  "Russian",
                  "Austrian",
@@ -22,7 +23,8 @@ namespace HelloWorldApp
             }
             initList();
             nationalities.Sort();
-            foreach (string nationality in nationalities){
+            foreach (string nationality in nationalities)
+            {
                 Console.WriteLine(nationality);
             }
         }
