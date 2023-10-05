@@ -15,7 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing", "Testing", "{C4F9
 		Class2.cs = Class2.cs
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary", "ClassLibrary\ClassLibrary.csproj", "{420B35BC-55E0-4D23-85C2-A97FA70270DA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UpvTubeLib", "ClassLibrary\UpvTubeLib.csproj", "{420B35BC-55E0-4D23-85C2-A97FA70270DA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lab1", "Lab1", "{CC1A6B8F-55C1-4714-9A2F-5B38E81F1960}"
 EndProject
