@@ -1,6 +1,6 @@
 ﻿namespace UpvTube.Entities
 {
-	public class Content
+	public partial class Content
 	{
 	
 	}

@@ -1,6 +1,6 @@
 ﻿namespace UpvTube.Entities
 {
-	public class Comment
+	public partial class Comment
 	{
 
 	}
