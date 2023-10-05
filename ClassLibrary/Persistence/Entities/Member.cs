@@ -11,11 +11,11 @@ namespace UpvTube.Entities
         
         public string FullName { get; set; }
         
-        public virtual DateTime LastAccessDate { get; set; }
+        public DateTime LastAccessDate { get; set; }
 
-        public virtual string Nick { get; set; }
+        public string Nick { get; set; }
 
-        public virtual string Password { get; set; }
+        public string Password { get; set; }
 
         #endregion
 
