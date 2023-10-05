@@ -45,6 +45,15 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Persistence\Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Persistence\Entities\Comment.cs" />
+    <Compile Include="Persistence\Entities\Content.cs" />
+    <Compile Include="Persistence\Entities\Evaluation.cs" />
+    <Compile Include="Persistence\Entities\Member.cs" />
+    <Compile Include="Persistence\Entities\Subject.cs" />
+    <Compile Include="Persistence\Entities\Visualization.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Persistence\Entities\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
