@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UPVTube.Entities;
 
 namespace UpvTube.Entities
@@ -36,6 +37,12 @@ namespace UpvTube.Entities
 			set;
 		}
 
+		public virtual Member Owner
+		{
+			get;
+			set;
+		}
+
 		public string Title
 		{
 			get;
@@ -43,6 +50,12 @@ namespace UpvTube.Entities
 		}
 
 		public DateTime UploadDate
+		{
+			get;
+			set;
+		}
+
+		public virtual List<Subject> Subjects
 		{
 			get;
 			set;

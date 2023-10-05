@@ -1,8 +1,16 @@
-﻿namespace UpvTube.Entities
+﻿using System.Collections.Generic;
+
+namespace UpvTube.Entities
 {
 	public partial class Subject
 	{
 		public int Code
+		{
+			get;
+			set;
+		}
+
+		public virtual List<Content> Contents
 		{
 			get;
 			set;
