@@ -8,6 +8,8 @@ namespace UpvTube.Entities
 
         public Content()
         {
+            this.Comments = new List<Comment>();
+            this.Visualizations = new List<Visualization>();
             this.Subjects = new List<Subject>();
         }
 
@@ -22,7 +24,10 @@ namespace UpvTube.Entities
             this.UploadDate = uploadDate;
 
             this.Owner = owner;
+            this.Evaluation = null;
 
+            this.Comments = new List<Comment>();
+            this.Visualizations = new List<Visualization>();
             this.Subjects = new List<Subject>();
         }
 

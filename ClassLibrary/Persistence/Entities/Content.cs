@@ -55,11 +55,30 @@ namespace UpvTube.Entities
 			set;
 		}
 
-		public virtual List<Subject> Subjects
+        public virtual List<Comment> Comments
+        {
+            get;
+            set;
+        }
+
+        public virtual Evaluation Evaluation
+        {
+            get;
+            set;
+        }
+
+        public virtual List<Subject> Subjects
 		{
 			get;
 			set;
 		}
-	}
+
+        public virtual List<Visualization> Visualizations
+        {
+            get;
+            set;
+        }
+
+    }
 }
 
