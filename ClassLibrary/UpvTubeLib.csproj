@@ -55,6 +55,7 @@
     <Compile Include="Persistence\Entities\Member.cs" />
     <Compile Include="Persistence\Entities\Subject.cs" />
     <Compile Include="Persistence\Entities\Visualization.cs" />
+    <Compile Include="BusinessLogic\Entities\Domains.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="BusinessLogic\Services\" />
