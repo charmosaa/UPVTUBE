@@ -10,7 +10,7 @@ namespace UpvTube.Entities
 			set;
 		}
 
-		public virtual List<Content> Contents
+		public virtual ICollection<Content> Contents
 		{
 			get;
 			set;

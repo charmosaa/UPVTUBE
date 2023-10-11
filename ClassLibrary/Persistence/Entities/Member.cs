@@ -22,15 +22,15 @@ namespace UpvTube.Entities
 
         #region RELATIONSHIPS
 
-        public virtual List<Comment> Comments { get; set; }
+        public virtual ICollection<Comment> Comments { get; set; }
 
-        public virtual List<Content> Contents { get; set; }
+        public virtual ICollection<Content> Contents { get; set; }
 
-        public virtual List<Evaluation> Evaluations { get; set; }
+        public virtual ICollection<Evaluation> Evaluations { get; set; }
 
-        public virtual List<Member> SubscribedTo { get; set; }
+        public virtual ICollection<Member> SubscribedTo { get; set; }
 
-        public virtual List<Visualization> Visualizations { get; set; }
+        public virtual ICollection<Visualization> Visualizations { get; set; }
 
         #endregion
     }

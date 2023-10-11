@@ -55,7 +55,7 @@ namespace UpvTube.Entities
 			set;
 		}
 
-        public virtual List<Comment> Comments
+        public virtual ICollection<Comment> Comments
         {
             get;
             set;
@@ -67,13 +67,13 @@ namespace UpvTube.Entities
             set;
         }
 
-        public virtual List<Subject> Subjects
+        public virtual ICollection<Subject> Subjects
 		{
 			get;
 			set;
 		}
 
-        public virtual List<Visualization> Visualizations
+        public virtual ICollection<Visualization> Visualizations
         {
             get;
             set;
