@@ -11,15 +11,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentatio
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing", "Testing", "{C4F99152-5FA3-4835-B1F2-87AEC87756F5}"
-	ProjectSection(SolutionItems) = preProject
-		Class2.cs = Class2.cs
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UpvTubeLib", "ClassLibrary\UpvTubeLib.csproj", "{420B35BC-55E0-4D23-85C2-A97FA70270DA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lab1", "Lab1", "{CC1A6B8F-55C1-4714-9A2F-5B38E81F1960}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloWorldApp", "HelloWorldApp\HelloWorldApp.csproj", "{0A2318F6-9347-4DAD-BD12-2E6618C3E149}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPVTubeObjectDesignTests", "UPVTubeObjectDesignTests\UPVTubeObjectDesignTests.csproj", "{48E97C2A-5638-42CF-B6F9-62EFF5DBBA34}"
+	ProjectSection(ProjectDependencies) = postProject
+		{420B35BC-55E0-4D23-85C2-A97FA70270DA} = {420B35BC-55E0-4D23-85C2-A97FA70270DA}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,14 +37,18 @@ Global
 		{0A2318F6-9347-4DAD-BD12-2E6618C3E149}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A2318F6-9347-4DAD-BD12-2E6618C3E149}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A2318F6-9347-4DAD-BD12-2E6618C3E149}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48E97C2A-5638-42CF-B6F9-62EFF5DBBA34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48E97C2A-5638-42CF-B6F9-62EFF5DBBA34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48E97C2A-5638-42CF-B6F9-62EFF5DBBA34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48E97C2A-5638-42CF-B6F9-62EFF5DBBA34}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{420B35BC-55E0-4D23-85C2-A97FA70270DA} = {3788A1F6-0D23-4EEA-B846-9F608CFA7D8E}
 		{CC1A6B8F-55C1-4714-9A2F-5B38E81F1960} = {C4F99152-5FA3-4835-B1F2-87AEC87756F5}
 		{0A2318F6-9347-4DAD-BD12-2E6618C3E149} = {CC1A6B8F-55C1-4714-9A2F-5B38E81F1960}
+		{48E97C2A-5638-42CF-B6F9-62EFF5DBBA34} = {C4F99152-5FA3-4835-B1F2-87AEC87756F5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2CB7BBB5-758D-49E9-B5B4-3E3452CA4C5A}
