@@ -4,7 +4,7 @@
     using System;
     public partial class Visualization
     {
-        public DateTime VisualizationTime
+        public DateTime VisualizationDate
         {
             get;
             set;

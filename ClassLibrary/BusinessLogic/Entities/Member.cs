@@ -11,7 +11,8 @@ namespace UPVTube.Entities
 			Contents = new List<Content>();
 			Evaluations = new List<Evaluation>();
 			SubscribedTo = new List<Member>();
-			Visualizations = new List<Visualization>();
+            Subscriptors = new List<Member>();
+            Visualizations = new List<Visualization>();
 		}
 
 		public Member(string email, string fullName, DateTime lastAccessDate, string nick, string password) : this()
