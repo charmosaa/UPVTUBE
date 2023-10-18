@@ -1,10 +1,10 @@
-﻿namespace UpvTube.Entities
+﻿namespace UPVTube.Entities
 
 {
     using System;
     public partial class Visualization
     {
-        public DateTime VisualizationTime
+        public DateTime VisualizationDate
         {
             get;
             set;

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace UpvTube.Entities
+namespace UPVTube.Entities
 {
 	public partial class Evaluation
 	{

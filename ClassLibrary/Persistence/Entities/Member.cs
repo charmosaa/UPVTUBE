@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace UpvTube.Entities
+namespace UPVTube.Entities
 {
 	public partial class Member
 	{
@@ -29,6 +29,7 @@ namespace UpvTube.Entities
         public virtual ICollection<Evaluation> Evaluations { get; set; }
 
         public virtual ICollection<Member> SubscribedTo { get; set; }
+        public virtual ICollection<Member> Subscriptors { get; set; }
 
         public virtual ICollection<Visualization> Visualizations { get; set; }
 

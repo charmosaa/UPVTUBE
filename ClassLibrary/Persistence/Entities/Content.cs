@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UPVTube.Entities;
 
-namespace UpvTube.Entities
+namespace UPVTube.Entities
 {
 	public partial class Content
 	{

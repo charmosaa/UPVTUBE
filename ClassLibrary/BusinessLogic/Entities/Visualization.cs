@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace UpvTube.Entities
+namespace UPVTube.Entities
 {
     public partial class Visualization
     {
@@ -8,7 +8,7 @@ namespace UpvTube.Entities
 
         public Visualization(DateTime dateTime, Content content, Member member) : this()
         {
-            this.VisualizationTime = dateTime;
+            this.VisualizationDate = dateTime;
             this.Content = content;
             this.Member = member;
         }
