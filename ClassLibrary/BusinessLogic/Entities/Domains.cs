@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 
-namespace UpvTube.Entities
+namespace UPVTube.Entities
 {
     // This class simulates the existence of a Directory Service
     // to know whether an Email belongs to a student or lecturer

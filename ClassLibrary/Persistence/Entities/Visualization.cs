@@ -1,4 +1,4 @@
-﻿namespace UpvTube.Entities
+﻿namespace UPVTube.Entities
 
 {
     using System;
