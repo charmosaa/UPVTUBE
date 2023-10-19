@@ -9,6 +9,7 @@ namespace UPVTube.Entities
 
         #region ATTRIBUTES
 
+        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.None), Key()]
         public int Code { get; set; }
 
         public string FullName { get; set; }

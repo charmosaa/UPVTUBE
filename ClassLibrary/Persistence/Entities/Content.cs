@@ -1,20 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using UPVTube.Entities;
+using System.ComponentModel.DataAnnotations;
 
 namespace UPVTube.Entities
 {
-	public partial class Content
+    public partial class Content
 	{
         #region ATTRIBUTES
+
+        public int Id { get; set; }
 
         public Authorized Authorized { get; set; }
 
         public string ContentURI { get; set; }
 
         public string Description { get; set; }
-
-        public int Id { get; set; }
 
         public string Title { get; set; }
 
@@ -26,6 +26,7 @@ namespace UPVTube.Entities
 
         #region RELATIONSHIPS
 
+        [Required]
         public virtual Member Owner { get; set; }
 
         public virtual ICollection<Comment> Comments { get; set; }
