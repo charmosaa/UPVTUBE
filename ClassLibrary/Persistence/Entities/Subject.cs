@@ -1,32 +1,27 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace UPVTube.Entities
 {
 	public partial class Subject
 	{
-		public int Code
-		{
-			get;
-			set;
-		}
 
-		public virtual ICollection<Content> Contents
-		{
-			get;
-			set;
-		}
+        #region ATTRIBUTES
 
-		public string FullName
-		{
-			get;
-			set;
-		}
+        public int Code { get; set; }
 
-        public string Name
-        {
-            get;
-            set;
-        }
+        public string FullName { get; set; }
+
+        public string Name { get; set; }
+
+        #endregion
+
+        #region RELATIONSHIPS
+
+        public virtual ICollection<Content> Contents { get; set; }
+
+        #endregion
     }
 }
 
