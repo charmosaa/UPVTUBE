@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace UPVTube.Entities
 {
@@ -13,6 +14,7 @@ namespace UPVTube.Entities
         
         public DateTime LastAccessDate { get; set; }
 
+        [Key]
         public string Nick { get; set; }
 
         public string Password { get; set; }
