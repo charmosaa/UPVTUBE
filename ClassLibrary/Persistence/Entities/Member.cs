@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace UPVTube.Entities
 {
@@ -7,14 +8,17 @@ namespace UPVTube.Entities
 	{
         #region ATTRIBUTES
 
+        [Required]
         public string Email { get; set; }
         
         public string FullName { get; set; }
         
         public DateTime LastAccessDate { get; set; }
 
+        [Key]
         public string Nick { get; set; }
 
+        [Required]
         public string Password { get; set; }
 
         #endregion
