@@ -8,7 +8,6 @@ namespace UPVTube.Entities
 	{
         #region ATTRIBUTES
 
-        [Required]
         public string Email { get; set; }
         
         public string FullName { get; set; }
@@ -18,7 +17,6 @@ namespace UPVTube.Entities
         [Key]
         public string Nick { get; set; }
 
-        [Required]
         public string Password { get; set; }
 
         #endregion
