@@ -25,10 +25,6 @@ namespace UPVTube.Entities
 
             this.Owner = owner;
             this.Evaluation = null;
-
-            this.Comments = new List<Comment>();
-            this.Visualizations = new List<Visualization>();
-            this.Subjects = new List<Subject>();
         }
 
     }
