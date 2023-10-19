@@ -14,8 +14,6 @@ namespace UPVTube.Entities
             this.Code = code;
             this.FullName = fullName;
             this.Name = name;
-
-            this.Contents = new List<Content>();
         }
 
     }
