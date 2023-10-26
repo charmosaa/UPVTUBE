@@ -23,6 +23,11 @@ namespace UPVTube.Entities
 			this.Nick = nick;
 			this.Password = password;
 		}
-	}
+
+        public void AddContent(Content c)
+        {
+            this.Contents.Add(c);
+        }
+    }
 }
 
