@@ -15,7 +15,6 @@ namespace DBTest
     {
         static void Main(string[] args)
         {
-
             try
             {
                 new Program();
@@ -63,7 +62,6 @@ namespace DBTest
             IDAL dal = new EntityFrameworkDAL(new UPVTubeDbContext());
 
             CreateSampleDB(dal);
-
         }
 
         private void CreateSampleDB(IDAL dal)
@@ -96,6 +94,5 @@ namespace DBTest
 
 
         }
-
     }
 }
