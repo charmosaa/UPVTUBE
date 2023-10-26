@@ -19,7 +19,7 @@ namespace HelloWorldApp
                  "Russian",
                  "Austrian",
                  "Brazilian",
-                 "Deliverable 1 :)"
+                 "Deliverable 1"
                 };
             }
             initList();
