@@ -15,6 +15,7 @@ namespace DBTest
     {
         static void Main(string[] args)
         {
+
             try
             {
                 new Program();
@@ -62,6 +63,7 @@ namespace DBTest
             IDAL dal = new EntityFrameworkDAL(new UPVTubeDbContext());
 
             CreateSampleDB(dal);
+
         }
 
         private void CreateSampleDB(IDAL dal)
@@ -88,11 +90,24 @@ namespace DBTest
 
             Console.WriteLine("A new video has been uploaded to: " + c1.ContentURI + " created by " + c1.Owner.FullName);
 
-            Console.ReadKey();
+
+            Console.WriteLine("\n// CREATING A MEMBER - PROFESSOR");
+            // public Member(String email, string fullName, DateTime lastAccessDate, string nick, string password)
+
+            Console.WriteLine("\n// CREATING A EVALUATION");
+            // public Evaluation()
+
+            Console.WriteLine("\n// CREATING A VISUALIZATION");
+            // public Visualization()
+
+            Console.WriteLine("\n// CREATING A COMMENT");
+            // public Comment()
 
             // Populate here the rest of the database with data
 
 
+            Console.ReadKey();
         }
+
     }
 }
