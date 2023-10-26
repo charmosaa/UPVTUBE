@@ -91,7 +91,7 @@ namespace DBTest
             // public Member(String email, string fullName, DateTime lastAccessDate, string nick, string password)
 
             Member p1 = new Member("john@inf.upv.es", "John Doe", DateTime.Now, "Prof", "4321");
-            dal.Insert<Member>(a1);
+            dal.Insert<Member>(p1);
             dal.Commit();
 
             Console.WriteLine("\n// CREATING A EVALUATION");
