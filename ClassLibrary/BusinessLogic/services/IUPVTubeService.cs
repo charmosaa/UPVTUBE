@@ -2,8 +2,8 @@ namespace UpvTube.BusinessLogic.Services
 {
     interface IUPVTubeService
     {
-        void registerNewUser();
-        void login();
+        void registerNewUser(string email, string nick, string password);
+        void login(string nick, string password);
         void logout();
         void uploadNewContent();
         void searchContent();
