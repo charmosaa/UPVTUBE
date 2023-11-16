@@ -57,6 +57,9 @@
     <Compile Include="BusinessLogic\Entities\Member.cs" />
     <Compile Include="BusinessLogic\Entities\Subject.cs" />
     <Compile Include="BusinessLogic\Entities\Visualization.cs" />
+    <Compile Include="BusinessLogic\Services\ServiceException.cs" />
+    <Compile Include="BusinessLogic\Services\UPVTubeService.cs" />
+    <Compile Include="BusinessLogic\Services\IUPVTubeService.cs" />
     <Compile Include="Persistence\Entities\Authorized.cs" />
     <Compile Include="Persistence\EntityFrameworkImp\DbContextISW.cs" />
     <Compile Include="Persistence\EntityFrameworkImp\EntityFrameworkDAL.cs" />
@@ -71,9 +74,7 @@
     <Compile Include="Persistence\Entities\Visualization.cs" />
     <Compile Include="BusinessLogic\Entities\Domains.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="BusinessLogic\Services\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
