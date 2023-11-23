@@ -11,7 +11,9 @@ namespace UpvTube.BusinessLogic.Services
         void logout();
         void uploadNewContent();
         ICollection<Content> searchContent(DateTime startDate, DateTime endDate, string ownerNick, string titleKeyword, Subject subject);
+        IEnumerable<Content> getAllContents();
         void displayContentDetails();
         void addReviewToPendingContent();
+
     }
 }

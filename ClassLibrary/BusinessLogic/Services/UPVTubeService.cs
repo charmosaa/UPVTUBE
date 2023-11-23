@@ -48,7 +48,7 @@ namespace UpvTube.BusinessLogic.Services
         {
             if(logged != null)
             {
-                IEnumerable<Content> contents = dal.GetAll<Content>();
+                IEnumerable<Content> contents = getAllContents();
 
                 // Filter by upload date range
                 if (startDate != null && endDate != null)
@@ -79,6 +79,10 @@ namespace UpvTube.BusinessLogic.Services
         public void uploadNewContent()
         {
             throw new System.NotImplementedException();
+        }
+
+        public IEnumerable<Content> getAllContents() {
+            return dal.GetAll<Content>();
         }
     }
 }
