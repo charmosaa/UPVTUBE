@@ -1,5 +1,7 @@
-﻿using UPVTube.Entities;
+﻿using System;
+using UPVTube.Entities;
 using UPVTube.Persistence;
+using UPVTube.Services;
 
 namespace UpvTube.BusinessLogic.Services
 {
@@ -14,9 +16,19 @@ namespace UpvTube.BusinessLogic.Services
             this.logged = null;
         }
 
-        public void addReviewToPendingContent()
+        public void addReviewToPendingContent(Content content, bool approved, string justification)
         {
-            throw new System.NotImplementedException();
+            if (approved && justification == null)
+            {
+                throw new ServiceException("You must provide a justification for rejecting a content.");
+            }
+            else
+            {
+                Evaluation eval = new Evaluation(DateTime.Now, justification, logged, content);
+                content.Evaluation = eval;
+                dal.Insert<Evaluation>(eval);
+                dal.Commit();
+            }
         }
 
         public void displayContentDetails()

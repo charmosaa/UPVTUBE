@@ -1,3 +1,5 @@
+using UPVTube.Entities;
+
 namespace UpvTube.BusinessLogic.Services
 {
     interface IUPVTubeService
@@ -8,6 +10,6 @@ namespace UpvTube.BusinessLogic.Services
         void uploadNewContent();
         void searchContent();
         void displayContentDetails();
-        void addReviewToPendingContent();
+        void addReviewToPendingContent(Content content, bool approved, string justification);
     }
 }
