@@ -1,5 +1,10 @@
-﻿using UPVTube.Entities;
+﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using UPVTube.Entities;
 using UPVTube.Persistence;
+using UPVTube.Services;
 
 namespace UpvTube.BusinessLogic.Services
 {
@@ -39,9 +44,36 @@ namespace UpvTube.BusinessLogic.Services
             throw new System.NotImplementedException();
         }
 
-        public void searchContent()
+        public ICollection<Content> searchContent (DateTime startDate, DateTime endDate, string ownerNick, string titleKeyword, Subject subject)
         {
-            throw new System.NotImplementedException();
+            if(logged != null)
+            {
+                IEnumerable<Content> contents = dal.GetAll<Content>();
+
+                // Filter by upload date range
+                if (startDate != null && endDate != null)
+                    contents = contents.Where(c => c.UploadDate >= startDate && c.UploadDate <= endDate);
+
+
+                // Filter by owner nick
+                if (!string.IsNullOrEmpty(ownerNick))
+                {
+                    Member owner = dal.GetById<Member>(ownerNick);
+                    contents = contents.Where(c => c.Owner == owner);
+                }
+
+                // Filter by title keyword
+                if (!string.IsNullOrEmpty(titleKeyword))
+                    contents = contents.Where(c => c.Title.Contains(titleKeyword));
+
+                // Filter by subject 
+                if (subject != null)
+                    contents =contents.Where(c => c.Subjects.Contains(subject));
+
+                return contents.ToList();
+                
+            }
+            else throw new ServiceException("unlogged user"); ;
         }
 
         public void uploadNewContent()

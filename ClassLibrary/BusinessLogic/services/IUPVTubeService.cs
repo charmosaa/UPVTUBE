@@ -1,3 +1,7 @@
+using System;
+using System.Collections.Generic;
+using UPVTube.Entities;
+
 namespace UpvTube.BusinessLogic.Services
 {
     interface IUPVTubeService
@@ -6,7 +10,7 @@ namespace UpvTube.BusinessLogic.Services
         void login();
         void logout();
         void uploadNewContent();
-        void searchContent();
+        ICollection<Content> searchContent(DateTime startDate, DateTime endDate, string ownerNick, string titleKeyword, Subject subject);
         void displayContentDetails();
         void addReviewToPendingContent();
     }
