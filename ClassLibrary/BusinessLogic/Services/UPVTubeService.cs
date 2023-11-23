@@ -1,5 +1,9 @@
-﻿using UPVTube.Entities;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using UPVTube.Entities;
 using UPVTube.Persistence;
+using UPVTube.Services;
 
 namespace UpvTube.BusinessLogic.Services
 {
@@ -19,24 +23,60 @@ namespace UpvTube.BusinessLogic.Services
             throw new System.NotImplementedException();
         }
 
-        public void displayContentDetails()
+        public Content displayContentDetails(int id)
         {
-            throw new System.NotImplementedException();
+            if (logged == null)
+            {
+                throw new ServiceException("Unauthorized");
+            }
+
+            Content content = dal.GetById<Content>(id);
+
+
+            if (content == null)
+            {
+                throw new ServiceException("Content with id " + id + " does not exists.");
+            }
+
+            return content;
         }
 
-        public void login()
+        public void login(string nick, string password)
         {
-            throw new System.NotImplementedException();
+            if(logged != null)
+            {
+                throw new ServiceException("User is already logged in.");
+            }
+
+            Member memberToBeLogged = dal.GetWhere<Member>((member) => member.Nick == nick && member.Password == password).FirstOrDefault();
+            if (memberToBeLogged != null)
+            {
+                logged = memberToBeLogged;
+            }
+            else throw new ServiceException("Wrong login credentials");
         }
 
         public void logout()
         {
-            throw new System.NotImplementedException();
+            if (logged == null)
+            {
+                throw new ServiceException("No member is logged.");
+            }
+
+            logged.LastAccessDate = DateTime.Now;
+            dal.Commit();
+
+            logged = null;
         }
 
-        public void registerNewUser()
+        public void registerNewUser(string email, string fullname, string nick, string password)
         {
-            throw new System.NotImplementedException();
+            if (dal.GetWhere<Member>((member) => member.Nick == nick || member.Email == email) == null)
+            {
+                dal.Insert<Member>(new Member(email, fullname, DateTime.Now, nick, password));
+                dal.Commit();
+            }
+            else throw new ServiceException("Member already exists.");
         }
 
         public void searchContent()
