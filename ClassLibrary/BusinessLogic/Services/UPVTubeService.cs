@@ -29,7 +29,16 @@ namespace UpvTube.BusinessLogic.Services
             {
                 throw new ServiceException("Unauthorized");
             }
-            return dal.GetById<Content>(id);
+
+            Content content = dal.GetById<Content>(id);
+
+
+            if (content == null)
+            {
+                throw new ServiceException("Content with id " + id + " does not exists.");
+            }
+
+            return content;
         }
 
         public void login(string nick, string password)
