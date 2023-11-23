@@ -23,9 +23,13 @@ namespace UpvTube.BusinessLogic.Services
             throw new System.NotImplementedException();
         }
 
-        public void displayContentDetails()
+        public Content displayContentDetails(int id)
         {
-            throw new System.NotImplementedException();
+            if (logged == null)
+            {
+                throw new ServiceException("Unauthorized");
+            }
+            return dal.GetById<Content>(id);
         }
 
         public void login(string nick, string password)
@@ -45,7 +49,7 @@ namespace UpvTube.BusinessLogic.Services
 
         public void logout()
         {
-            if (logged != null)
+            if (logged == null)
             {
                 throw new ServiceException("No member is logged.");
             }
