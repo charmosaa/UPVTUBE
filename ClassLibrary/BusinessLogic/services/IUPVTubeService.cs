@@ -10,6 +10,6 @@ namespace UpvTube.BusinessLogic.Services
         void uploadNewContent();
         void searchContent();
         void displayContentDetails();
-        void addReviewToPendingContent(Content content, bool approved, string justification);
+        void addReviewToPendingContent(Content content, string justification);
     }
 }
