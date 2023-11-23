@@ -18,6 +18,53 @@ namespace UpvTube.BusinessLogic.Services
             this.logged = null;
         }
 
+        public void RemoveAllData()
+        {
+            this.dal.RemoveAllData();
+        }
+
+        public void Commit()
+        {
+            this.dal.Commit();
+        }
+
+        public void AddSubject(Subject subject)
+        {
+            // Restriction: Not two subjects with the same code
+            if (Dal.GetById<Subject>(subject.Code) == null)
+            {
+                // Restriction: Not two courses with same name
+                if (!Dal.GetWhere<Subject>(x => x.Name == subject.Name).Any())
+                {
+                    // Inserting in the DB
+                    Dal.Insert<Subject>(subject);
+                    Dal.Commit();
+                }
+                else
+                    throw new ServiceException("Subject with name " + subject.Name + "
+                   already exists.");
+            }
+            else
+                throw new ServiceException("Subject with code " + subject.Code + "
+               already exists.");
+        }
+
+        public void DBInitialization()
+        {
+            this.RemoveAllData();
+            Subject s1 = new Subject(11555, "Ingeniería del software","ISW");
+            AddSubject(s1);
+            Subject s2 = new Subject(11553, "Arquitectura e ingeniería de computadores", "AIC");
+            AddSubject(s2);
+            Subject s3 = new Subject(11548, "Bases de datos y sistemas de información", "BDA");
+            AddSubject(s3);
+            Subject s4 = new Subject(11560, "Sistemas inteligentes", "SIN");
+            AddSubject(s4);
+
+            // TODO: Añadir los 3 miembros
+            // TODO: Añadir los 4 contenidos
+        }
+
         public void addReviewToPendingContent(Content content, string justification)
         {
             if (logged == null)
