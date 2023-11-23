@@ -18,9 +18,24 @@ namespace UpvTube.BusinessLogic.Services
             this.logged = null;
         }
 
-        public void addReviewToPendingContent()
+        public void addReviewToPendingContent(Content content, string justification)
         {
-            throw new System.NotImplementedException();
+            if (logged == null)
+            {
+                throw new ServiceException("Unathorized");
+            }
+
+            if (!Domains.IsTeacherDomain(logged.Email))
+            {
+                throw new ServiceException("You don't have the permissions to review content.");
+            }
+          
+            Evaluation eval = new Evaluation(DateTime.Now, justification, logged, content);
+            content.Evaluation = eval;
+            dal.Insert<Evaluation>(eval);
+            dal.Commit();
+
+            // TODO: send an email to the content owner indicating the result of the review  
         }
 
         public Content displayContentDetails(int id)
@@ -31,7 +46,6 @@ namespace UpvTube.BusinessLogic.Services
             }
 
             Content content = dal.GetById<Content>(id);
-
 
             if (content == null)
             {
