@@ -8,7 +8,8 @@ namespace UpvTube.BusinessLogic.Services
         void login(string nick, string password);
         void logout();
         void uploadNewContent(string contentURI, string description, bool isPublic, string title, ICollection<Subject> subjects);
-        void searchContent();
+        public ICollection<Content> searchContent(DateTime startDate, DateTime endDate, string ownerNick, string titleKeyword, Subject subject);
+        IEnumerable<Content> getAllContents();
         Content displayContentDetails(int id);
         void addReviewToPendingContent();
     }

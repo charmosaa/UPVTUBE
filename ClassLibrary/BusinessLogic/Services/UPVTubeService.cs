@@ -79,9 +79,41 @@ namespace UpvTube.BusinessLogic.Services
             else throw new ServiceException("Member already exists.");
         }
 
-        public void searchContent()
+        public IEnumerable<Content> getAllContents()
         {
-            throw new System.NotImplementedException();
+            return dal.GetAll<Content>();
+        }
+
+        public ICollection<Content> searchContent(DateTime startDate, DateTime endDate, string ownerNick, string titleKeyword, Subject subject)
+        {
+            if (logged == null)
+            {
+                throw new ServiceException("Unathorized");
+            }
+
+            IEnumerable<Content> contents = getAllContents();
+            // Filter by upload date range
+            if (startDate != null && endDate != null)
+            {
+                contents = contents.Where(c => c.UploadDate >= startDate && c.UploadDate <= endDate);
+            }
+            // Filter by owner nick
+            if (!string.IsNullOrEmpty(ownerNick))
+            {
+                Member owner = dal.GetById<Member>(ownerNick);
+                contents = contents.Where(c => c.Owner == owner);
+            }
+            // Filter by title keyword
+            if (!string.IsNullOrEmpty(titleKeyword))
+            {
+                contents = contents.Where(c => c.Title.Contains(titleKeyword));
+            }
+            // Filter by subject 
+            if (subject != null)
+            {
+                contents = contents.Where(c => c.Subjects.Contains(subject));
+            }
+            return contents.ToList();
         }
 
         public ICollection<Subject> getAllSubjects()
