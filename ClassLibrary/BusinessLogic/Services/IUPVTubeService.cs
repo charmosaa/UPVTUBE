@@ -4,13 +4,14 @@ namespace UpvTube.BusinessLogic.Services
 {
     interface IUPVTubeService
     {
-        void registerNewUser(string email, string fullname, string nick, string password);
-        void login(string nick, string password);
-        void logout();
-        void uploadNewContent(string contentURI, string description, bool isPublic, string title, ICollection<Subject> subjects);
-        ICollection<Content> searchContent(DateTime startDate, DateTime endDate, string ownerNick, string titleKeyword, Subject subject);
-        IEnumerable<Content> getAllContents();
-        Content displayContentDetails(int id);
-        void addReviewToPendingContent(Content content, string justification);
+        void RegisterNewUser(string email, string fullname, string nick, string password);
+        void Login(string nick, string password);
+        void Logout();
+        void UploadNewContent(string contentURI, string description, bool isPublic, string title, ICollection<Subject> subjects);
+        ICollection<Content> SearchContent(DateTime startDate, DateTime endDate, string ownerNick, string titleKeyword, Subject subject);
+        ICollection<Content> GetAllContents();
+        ICollection<Subject> GetAllSubjects();
+        Content DisplayContentDetails(int id);
+        void AddReviewToPendingContent(Content content, string justification);
     }
 }

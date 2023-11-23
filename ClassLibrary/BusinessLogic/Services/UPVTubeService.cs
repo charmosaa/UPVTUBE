@@ -65,7 +65,7 @@ namespace UpvTube.BusinessLogic.Services
             // TODO: Añadir los 4 contenidos
         }
 
-        public void addReviewToPendingContent(Content content, string justification)
+        public void AddReviewToPendingContent(Content content, string justification)
         {
             if (logged == null)
             {
@@ -85,7 +85,7 @@ namespace UpvTube.BusinessLogic.Services
             // TODO: send an email to the content owner indicating the result of the review  
         }
 
-        public Content displayContentDetails(int id)
+        public Content DisplayContentDetails(int id)
         {
             if (logged == null)
             {
@@ -102,7 +102,7 @@ namespace UpvTube.BusinessLogic.Services
             return content;
         }
 
-        public void login(string nick, string password)
+        public void Login(string nick, string password)
         {
             if(logged != null)
             {
@@ -117,7 +117,7 @@ namespace UpvTube.BusinessLogic.Services
             else throw new ServiceException("Wrong login credentials");
         }
 
-        public void logout()
+        public void Logout()
         {
             if (logged == null)
             {
@@ -130,7 +130,7 @@ namespace UpvTube.BusinessLogic.Services
             logged = null;
         }
 
-        public void registerNewUser(string email, string fullname, string nick, string password)
+        public void RegisterNewUser(string email, string fullname, string nick, string password)
         {
             if (dal.GetWhere<Member>((member) => member.Nick == nick || member.Email == email) == null)
             {
@@ -140,19 +140,19 @@ namespace UpvTube.BusinessLogic.Services
             else throw new ServiceException("Member already exists.");
         }
 
-        public IEnumerable<Content> getAllContents()
+        public IEnumerable<Content> GetAllContents()
         {
             return dal.GetAll<Content>();
         }
 
-        public ICollection<Content> searchContent(DateTime startDate, DateTime endDate, string ownerNick, string titleKeyword, Subject subject)
+        public ICollection<Content> SearchContent(DateTime startDate, DateTime endDate, string ownerNick, string titleKeyword, Subject subject)
         {
             if (logged == null)
             {
                 throw new ServiceException("Unathorized");
             }
 
-            IEnumerable<Content> contents = getAllContents();
+            IEnumerable<Content> contents = GetAllContents();
             // Filter by upload date range
             if (startDate != null && endDate != null)
             {
@@ -177,12 +177,12 @@ namespace UpvTube.BusinessLogic.Services
             return contents.ToList();
         }
 
-        public ICollection<Subject> getAllSubjects()
+        public ICollection<Subject> GetAllSubjects()
         {
             return dal.GetAll<Subject>().ToList();
         }
 
-        public void uploadNewContent(string contentURI, string description, bool isPublic, string title, ICollection<Subject> subjects)
+        public void UploadNewContent(string contentURI, string description, bool isPublic, string title, ICollection<Subject> subjects)
         {
             if (logged == null)
             {
