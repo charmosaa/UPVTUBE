@@ -13,7 +13,8 @@ namespace UpvTube.BusinessLogic.Services
         private readonly IDAL dal;
         private Member logged;
 
-        public UPVTubeService(IDAL dal) {
+        public UPVTubeService(IDAL dal)
+        {
             this.dal = dal;
             this.logged = null;
         }
@@ -31,14 +32,14 @@ namespace UpvTube.BusinessLogic.Services
         public void AddSubject(Subject subject)
         {
             // Restriction: Not two subjects with the same code
-            if (Dal.GetById<Subject>(subject.Code) == null)
+            if (dal.GetById<Subject>(subject.Code) == null)
             {
                 // Restriction: Not two courses with same name
-                if (!Dal.GetWhere<Subject>(x => x.Name == subject.Name).Any())
+                if (!dal.GetWhere<Subject>(x => x.Name == subject.Name).Any())
                 {
                     // Inserting in the DB
-                    Dal.Insert<Subject>(subject);
-                    Dal.Commit();
+                    dal.Insert<Subject>(subject);
+                    dal.Commit();
                 }
                 else
                     throw new ServiceException("Subject with name " + subject.Name + " already exists.");
@@ -50,7 +51,7 @@ namespace UpvTube.BusinessLogic.Services
         public void DBInitialization()
         {
             this.RemoveAllData();
-            Subject s1 = new Subject(11555, "Ingeniería del software","ISW");
+            Subject s1 = new Subject(11555, "Ingeniería del software", "ISW");
             AddSubject(s1);
             Subject s2 = new Subject(11553, "Arquitectura e ingeniería de computadores", "AIC");
             AddSubject(s2);
@@ -59,8 +60,14 @@ namespace UpvTube.BusinessLogic.Services
             Subject s4 = new Subject(11560, "Sistemas inteligentes", "SIN");
             AddSubject(s4);
 
-            // TODO: Añadir los 3 miembros
-            // TODO: Añadir los 4 contenidos
+            RegisterNewUser("lmantov@alumno.upv.es", "Leonardo Mantovani", "lmantov", "passw0rd");
+            RegisterNewUser("mlopian@alumno.upv.es", "Martyna Lopianiak", "mlopian", "12345678");
+            RegisterNewUser("fjaen@upv.edu.es", "Francisco Javier Jaén Martínez", "fjaen", "upv2023");
+
+            UploadNewContent("https://example.com", "Example content", true, "Example Content", [s1, s3]);
+            UploadNewContent("https://upv.es", "The UPV Website", true, "UPV Website", [s4]);
+            UploadNewContent("https://poliformat.upv.es", "The PoliformaT platform", false, "PoliformaT", [s2]);
+            UploadNewContent("https://dev.azure.com", "Azure DevOps Website", true, "Azure DevOps", [s1]);
         }
 
         public void AddReviewToPendingContent(Content content, string justification)
@@ -74,9 +81,17 @@ namespace UpvTube.BusinessLogic.Services
             {
                 throw new ServiceException("You don't have the permissions to review content.");
             }
-          
+
             Evaluation eval = new Evaluation(DateTime.Now, justification, logged, content);
             content.Evaluation = eval;
+            if (justification == null)
+            {
+                content.Authorized = Authorized.Yes;
+            }
+            else
+            {
+                content.Authorized = Authorized.No;
+            }
             dal.Insert<Evaluation>(eval);
             dal.Commit();
 
@@ -102,7 +117,7 @@ namespace UpvTube.BusinessLogic.Services
 
         public void Login(string nick, string password)
         {
-            if(logged != null)
+            if (logged != null)
             {
                 throw new ServiceException("User is already logged in.");
             }
@@ -138,9 +153,9 @@ namespace UpvTube.BusinessLogic.Services
             else throw new ServiceException("Member already exists.");
         }
 
-        public IEnumerable<Content> GetAllContents()
+        public ICollection<Content> GetAllContents()
         {
-            return dal.GetAll<Content>();
+            return dal.GetAll<Content>().toList();
         }
 
         public ICollection<Content> SearchContent(DateTime startDate, DateTime endDate, string ownerNick, string titleKeyword, Subject subject)
@@ -150,7 +165,7 @@ namespace UpvTube.BusinessLogic.Services
                 throw new ServiceException("Unathorized");
             }
 
-            IEnumerable<Content> contents = GetAllContents();
+            IEnumerable<Content> contents = dal.GetWhere<Content>(c => c.Authorized == Authorized.Yes);
             // Filter by upload date range
             if (startDate != null && endDate != null)
             {
@@ -159,8 +174,7 @@ namespace UpvTube.BusinessLogic.Services
             // Filter by owner nick
             if (!string.IsNullOrEmpty(ownerNick))
             {
-                Member owner = dal.GetById<Member>(ownerNick);
-                contents = contents.Where(c => c.Owner == owner);
+                contents = contents.Where(c => c.Owner.Nick == ownerNick);
             }
             // Filter by title keyword
             if (!string.IsNullOrEmpty(titleKeyword))
