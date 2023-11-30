@@ -41,12 +41,10 @@ namespace UpvTube.BusinessLogic.Services
                     Dal.Commit();
                 }
                 else
-                    throw new ServiceException("Subject with name " + subject.Name + "
-                   already exists.");
+                    throw new ServiceException("Subject with name " + subject.Name + " already exists.");
             }
             else
-                throw new ServiceException("Subject with code " + subject.Code + "
-               already exists.");
+                throw new ServiceException("Subject with code " + subject.Code + " already exists.");
         }
 
         public void DBInitialization()
