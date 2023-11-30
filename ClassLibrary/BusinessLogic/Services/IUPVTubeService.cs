@@ -1,8 +1,10 @@
+using System;
+using System.Collections.Generic;
 using UPVTube.Entities;
 
 namespace UpvTube.BusinessLogic.Services
 {
-    interface IUPVTubeService
+    public interface IUPVTubeService
     {
         void RegisterNewUser(string email, string fullname, string nick, string password);
         void Login(string nick, string password);
