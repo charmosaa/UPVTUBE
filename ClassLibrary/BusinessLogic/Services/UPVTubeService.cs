@@ -59,8 +59,14 @@ namespace UpvTube.BusinessLogic.Services
             Subject s4 = new Subject(11560, "Sistemas inteligentes", "SIN");
             AddSubject(s4);
 
-            // TODO: Añadir los 3 miembros
-            // TODO: Añadir los 4 contenidos
+            RegisterNewUser("lmantov@alumno.upv.es", "Leonardo Mantovani", "lmantov", "passw0rd");
+            RegisterNewUser("mlopian@alumno.upv.es", "Martyna Lopianiak", "mlopian", "12345678");
+            RegisterNewUser("fjaen@upv.edu.es", "Francisco Javier Jaén Martínez", "fjaen", "upv2023");
+
+            UploadNewContent("https://example.com", "Example content", true, "Example Content", [s1, s3]);
+            UploadNewContent("https://upv.es", "The UPV Website", true, "UPV Website", [s4]);
+            UploadNewContent("https://poliformat.upv.es", "The PoliformaT platform", false, "PoliformaT", [s2]);
+            UploadNewContent("https://dev.azure.com", "Azure DevOps Website", true, "Azure DevOps", [s1]);
         }
 
         public void AddReviewToPendingContent(Content content, string justification)
