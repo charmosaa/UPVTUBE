@@ -13,7 +13,8 @@ namespace UpvTube.BusinessLogic.Services
         private readonly IDAL dal;
         private Member logged;
 
-        public UPVTubeService(IDAL dal) {
+        public UPVTubeService(IDAL dal)
+        {
             this.dal = dal;
             this.logged = null;
         }
@@ -31,14 +32,14 @@ namespace UpvTube.BusinessLogic.Services
         public void AddSubject(Subject subject)
         {
             // Restriction: Not two subjects with the same code
-            if (Dal.GetById<Subject>(subject.Code) == null)
+            if (dal.GetById<Subject>(subject.Code) == null)
             {
                 // Restriction: Not two courses with same name
-                if (!Dal.GetWhere<Subject>(x => x.Name == subject.Name).Any())
+                if (!dal.GetWhere<Subject>(x => x.Name == subject.Name).Any())
                 {
                     // Inserting in the DB
-                    Dal.Insert<Subject>(subject);
-                    Dal.Commit();
+                    dal.Insert<Subject>(subject);
+                    dal.Commit();
                 }
                 else
                     throw new ServiceException("Subject with name " + subject.Name + " already exists.");
@@ -50,7 +51,7 @@ namespace UpvTube.BusinessLogic.Services
         public void DBInitialization()
         {
             this.RemoveAllData();
-            Subject s1 = new Subject(11555, "Ingeniería del software","ISW");
+            Subject s1 = new Subject(11555, "Ingeniería del software", "ISW");
             AddSubject(s1);
             Subject s2 = new Subject(11553, "Arquitectura e ingeniería de computadores", "AIC");
             AddSubject(s2);
@@ -80,7 +81,7 @@ namespace UpvTube.BusinessLogic.Services
             {
                 throw new ServiceException("You don't have the permissions to review content.");
             }
-          
+
             Evaluation eval = new Evaluation(DateTime.Now, justification, logged, content);
             content.Evaluation = eval;
             if (justification == null)
@@ -116,7 +117,7 @@ namespace UpvTube.BusinessLogic.Services
 
         public void Login(string nick, string password)
         {
-            if(logged != null)
+            if (logged != null)
             {
                 throw new ServiceException("User is already logged in.");
             }
