@@ -83,6 +83,14 @@ namespace UpvTube.BusinessLogic.Services
           
             Evaluation eval = new Evaluation(DateTime.Now, justification, logged, content);
             content.Evaluation = eval;
+            if (justification == null)
+            {
+                content.Authorized = Authorized.Yes;
+            }
+            else
+            {
+                content.Authorized = Authorized.No;
+            }
             dal.Insert<Evaluation>(eval);
             dal.Commit();
 
@@ -144,9 +152,9 @@ namespace UpvTube.BusinessLogic.Services
             else throw new ServiceException("Member already exists.");
         }
 
-        public IEnumerable<Content> GetAllContents()
+        public ICollection<Content> GetAllContents()
         {
-            return dal.GetAll<Content>();
+            return dal.GetAll<Content>().toList();
         }
 
         public ICollection<Content> SearchContent(DateTime startDate, DateTime endDate, string ownerNick, string titleKeyword, Subject subject)
@@ -156,7 +164,7 @@ namespace UpvTube.BusinessLogic.Services
                 throw new ServiceException("Unathorized");
             }
 
-            IEnumerable<Content> contents = GetAllContents();
+            IEnumerable<Content> contents = dal.GetWhere<Content>(c => c.Authorized == Authorized.Yes);
             // Filter by upload date range
             if (startDate != null && endDate != null)
             {
@@ -165,8 +173,7 @@ namespace UpvTube.BusinessLogic.Services
             // Filter by owner nick
             if (!string.IsNullOrEmpty(ownerNick))
             {
-                Member owner = dal.GetById<Member>(ownerNick);
-                contents = contents.Where(c => c.Owner == owner);
+                contents = contents.Where(c => c.Owner.Nick == ownerNick);
             }
             // Filter by title keyword
             if (!string.IsNullOrEmpty(titleKeyword))
