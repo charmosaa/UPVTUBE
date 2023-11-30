@@ -64,10 +64,10 @@ namespace UpvTube.BusinessLogic.Services
             RegisterNewUser("mlopian@alumno.upv.es", "Martyna Lopianiak", "mlopian", "12345678");
             RegisterNewUser("fjaen@upv.edu.es", "Francisco Javier Jaén Martínez", "fjaen", "upv2023");
 
-            UploadNewContent("https://example.com", "Example content", true, "Example Content", [s1, s3]);
-            UploadNewContent("https://upv.es", "The UPV Website", true, "UPV Website", [s4]);
-            UploadNewContent("https://poliformat.upv.es", "The PoliformaT platform", false, "PoliformaT", [s2]);
-            UploadNewContent("https://dev.azure.com", "Azure DevOps Website", true, "Azure DevOps", [s1]);
+            UploadNewContent("https://example.com", "Example content", true, "Example Content", new List<Subject> { s1, s3 });
+            UploadNewContent("https://upv.es", "The UPV Website", true, "UPV Website", new List<Subject> { s4 });
+            UploadNewContent("https://poliformat.upv.es", "The PoliformaT platform", false, "PoliformaT", new List<Subject> { s2 });
+            UploadNewContent("https://dev.azure.com", "Azure DevOps Website", true, "Azure DevOps", new List<Subject> { s1 });
         }
 
         public void AddReviewToPendingContent(Content content, string justification)
@@ -155,7 +155,7 @@ namespace UpvTube.BusinessLogic.Services
 
         public ICollection<Content> GetAllContents()
         {
-            return dal.GetAll<Content>().toList();
+            return dal.GetAll<Content>().ToList();
         }
 
         public ICollection<Content> SearchContent(DateTime startDate, DateTime endDate, string ownerNick, string titleKeyword, Subject subject)
@@ -166,6 +166,11 @@ namespace UpvTube.BusinessLogic.Services
             }
 
             IEnumerable<Content> contents = dal.GetWhere<Content>(c => c.Authorized == Authorized.Yes);
+            // Filter by public/private access
+            if (!Domains.IsUPVMemberDomain(logged.Email))
+            {
+                contents = contents.Where(c => c.IsPublic == true);
+            }
             // Filter by upload date range
             if (startDate != null && endDate != null)
             {
