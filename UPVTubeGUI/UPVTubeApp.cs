@@ -15,10 +15,14 @@ namespace UPVTubeGUI
     {
 
         public IUPVTubeService service;
-    
-        public UPVTubeApp(IUPVTubeService Service)
+
+        public UPVTubeApp()
         {
             InitializeComponent();
+        }
+    
+        public UPVTubeApp(IUPVTubeService Service):this()
+        {
             this.service = Service;
         }
     }

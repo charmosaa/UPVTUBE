@@ -22,6 +22,7 @@ namespace UpvTube.BusinessLogic.Services
         public void RemoveAllData()
         {
             this.dal.RemoveAllData();
+            dal.Commit();
         }
 
         public void Commit()
@@ -62,12 +63,14 @@ namespace UpvTube.BusinessLogic.Services
 
             RegisterNewUser("lmantov@alumno.upv.es", "Leonardo Mantovani", "lmantov", "passw0rd");
             RegisterNewUser("mlopian@alumno.upv.es", "Martyna Lopianiak", "mlopian", "12345678");
-            RegisterNewUser("fjaen@upv.edu.es", "Francisco Javier Jaén Martínez", "fjaen", "upv2023");
+            RegisterNewUser("fjaen@dsic.upv.es", "Francisco Javier Jaén Martínez", "fjaen", "upv2023");
 
+            Login("fjaen", "upv2023");
             UploadNewContent("https://example.com", "Example content", true, "Example Content", new List<Subject> { s1, s3 });
             UploadNewContent("https://upv.es", "The UPV Website", true, "UPV Website", new List<Subject> { s4 });
             UploadNewContent("https://poliformat.upv.es", "The PoliformaT platform", false, "PoliformaT", new List<Subject> { s2 });
             UploadNewContent("https://dev.azure.com", "Azure DevOps Website", true, "Azure DevOps", new List<Subject> { s1 });
+            Logout();
         }
 
         public void AddReviewToPendingContent(Content content, string justification)
@@ -145,7 +148,7 @@ namespace UpvTube.BusinessLogic.Services
 
         public void RegisterNewUser(string email, string fullname, string nick, string password)
         {
-            if (dal.GetWhere<Member>((member) => member.Nick == nick || member.Email == email) == null)
+            if (dal.GetWhere<Member>((member) => member.Nick == nick || member.Email == email).Count() == 0)
             {
                 dal.Insert<Member>(new Member(email, fullname, DateTime.Now, nick, password));
                 dal.Commit();
