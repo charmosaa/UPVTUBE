@@ -13,9 +13,16 @@ namespace UPVTubeGUI
 {
     public partial class UPVTubeApp : UPVTubeBase
     {
+
         public UPVTubeApp(IUPVTubeService service) : base(service)
         {
             InitializeComponent();
         }
+
+        private void UPVTubeApp_Load(object sender, EventArgs e)
+        {
+       
+        }
+
     }
 }
