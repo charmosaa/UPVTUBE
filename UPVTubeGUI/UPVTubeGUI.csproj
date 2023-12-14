@@ -62,6 +62,12 @@
     <Compile Include="LogInForm.Designer.cs">
       <DependentUpon>LogInForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UploadNewContentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UploadNewContentForm.Designer.cs">
+      <DependentUpon>UploadNewContentForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UPVTubeApp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,6 +84,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="LogInForm.resx">
       <DependentUpon>LogInForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UploadNewContentForm.resx">
+      <DependentUpon>UploadNewContentForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UPVTubeBase.resx">
       <DependentUpon>UPVTubeBase.cs</DependentUpon>
