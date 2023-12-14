@@ -16,6 +16,8 @@ namespace UpvTube.BusinessLogic.Services
         ICollection<Subject> GetAllSubjects();
         Content DisplayContentDetails(int id);
         void AddReviewToPendingContent(Content content, string justification);
+
+        void RemoveAllData();
         void DBInitialization();
     }
 }

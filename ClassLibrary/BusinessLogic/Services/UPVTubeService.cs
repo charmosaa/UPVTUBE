@@ -26,6 +26,7 @@ namespace UpvTube.BusinessLogic.Services
 
         public void RemoveAllData()
         {
+            this.logged = null;
             this.dal.RemoveAllData();
             dal.Commit();
         }
