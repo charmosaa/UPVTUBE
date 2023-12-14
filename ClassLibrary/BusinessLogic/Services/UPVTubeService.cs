@@ -61,8 +61,8 @@ namespace UpvTube.BusinessLogic.Services
             Subject s4 = new Subject(11560, "Sistemas inteligentes", "SIN");
             AddSubject(s4);
 
-            RegisterNewUser("lmantov@alumno.upv.es", "Leonardo Mantovani", "lmantov", "passw0rd");
-            RegisterNewUser("mlopian@alumno.upv.es", "Martyna Lopianiak", "mlopian", "12345678");
+            RegisterNewUser("lmantov@inf.upv.es", "Leonardo Mantovani", "lmantov", "passw0rd");
+            RegisterNewUser("mlopian@inf.upv.es", "Martyna Lopianiak", "mlopian", "12345678");
             RegisterNewUser("fjaen@dsic.upv.es", "Francisco Javier Jaén Martínez", "fjaen", "upv2023");
 
             Login("fjaen", "upv2023");
@@ -87,6 +87,7 @@ namespace UpvTube.BusinessLogic.Services
 
             Evaluation eval = new Evaluation(DateTime.Now, justification, logged, content);
             content.Evaluation = eval;
+            logged.Evaluations.Add(eval);
             if (justification == null)
             {
                 content.Authorized = Authorized.Yes;
