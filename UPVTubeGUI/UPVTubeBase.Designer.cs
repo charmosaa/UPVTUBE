@@ -46,6 +46,8 @@
             this.contentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clearDBToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clearDBToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripLoggedOut.SuspendLayout();
             this.menuStripLoggedIn.SuspendLayout();
             this.SuspendLayout();
@@ -175,6 +177,9 @@
             // 
             // contentToolStripMenuItem
             // 
+            this.contentToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addToolStripMenuItem,
+            this.listToolStripMenuItem});
             this.contentToolStripMenuItem.Name = "contentToolStripMenuItem";
             this.contentToolStripMenuItem.Size = new System.Drawing.Size(75, 24);
             this.contentToolStripMenuItem.Text = "Content";
@@ -192,6 +197,18 @@
             this.clearDBToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
             this.clearDBToolStripMenuItem1.Text = "Clear DB";
             this.clearDBToolStripMenuItem1.Click += new System.EventHandler(this.clearDBToolStripMenuItem1_Click);
+            // 
+            // addToolStripMenuItem
+            // 
+            this.addToolStripMenuItem.Name = "addToolStripMenuItem";
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.addToolStripMenuItem.Text = "Add";
+            // 
+            // listToolStripMenuItem
+            // 
+            this.listToolStripMenuItem.Name = "listToolStripMenuItem";
+            this.listToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.listToolStripMenuItem.Text = "List";
             // 
             // UPVTubeBase
             // 
@@ -232,6 +249,8 @@
         private System.Windows.Forms.ToolStripMenuItem contentToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem clearDBToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem clearDBToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem listToolStripMenuItem;
     }
 }
 
