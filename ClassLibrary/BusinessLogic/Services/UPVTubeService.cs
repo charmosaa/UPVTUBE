@@ -148,10 +148,10 @@ namespace UpvTube.BusinessLogic.Services
 
         public void RegisterNewUser(string email, string fullname, string nick, string password)
         {
-            if(dal.GetWhere<Member>((member) => member.Nick == nick).Count()>0)
+            if (dal.GetWhere<Member>((member) => member.Nick == nick).Count() > 0)
                 throw new ServiceException("Member with this nick already exists.");
 
-            else if (dal.GetWhere<Member>((member) =>  member.Email == email).Count() > 0)
+            else if (dal.GetWhere<Member>((member) => member.Email == email).Count() > 0)
                 throw new ServiceException("Member with this email already exists.");
             else
             {
@@ -221,6 +221,16 @@ namespace UpvTube.BusinessLogic.Services
             if (subjects.Count() > 3)
             {
                 throw new ServiceException("You can't add more than 3 subjects.");
+            }
+
+            if (contentURI == null || contentURI == "")
+            {
+                throw new ServiceException("Content URI can't be empty.");
+            }
+
+            if (title == null || title == "")
+            {
+                throw new ServiceException("Title can't be empty");
             }
 
             Content newContent = new Content(contentURI, description, isPublic, title, DateTime.Now, logged);
