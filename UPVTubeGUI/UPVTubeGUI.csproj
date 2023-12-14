@@ -68,13 +68,19 @@
     <Compile Include="UPVTubeApp.Designer.cs">
       <DependentUpon>UPVTubeApp.cs</DependentUpon>
     </Compile>
+    <Compile Include="UPVTubeBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UPVTubeBase.Designer.cs">
+      <DependentUpon>UPVTubeBase.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="LogInForm.resx">
       <DependentUpon>LogInForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UPVTubeApp.resx">
-      <DependentUpon>UPVTubeApp.cs</DependentUpon>
+    <EmbeddedResource Include="UPVTubeBase.resx">
+      <DependentUpon>UPVTubeBase.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

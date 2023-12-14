@@ -12,13 +12,11 @@ using UPVTube.Services;
 
 namespace UPVTubeGUI
 {
-    public partial class LogInForm : UPVTubeApp
+    public partial class LogInForm : UPVTubeBase
     {
         public LogInForm(IUPVTubeService service): base(service)
         {
             InitializeComponent();
-            service.DBInitialization();
-
         }
 
         private void logInButton_Click(object sender, EventArgs e)

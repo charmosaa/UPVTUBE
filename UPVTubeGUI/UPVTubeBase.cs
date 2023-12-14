@@ -11,11 +11,19 @@ using UpvTube.BusinessLogic.Services;
 
 namespace UPVTubeGUI
 {
-    public partial class UPVTubeApp : UPVTubeBase
+    public partial class UPVTubeBase : Form
     {
-        public UPVTubeApp(IUPVTubeService service) : base(service)
+
+        public IUPVTubeService service;
+
+        public UPVTubeBase()
         {
             InitializeComponent();
+        }
+    
+        public UPVTubeBase(IUPVTubeService Service):this()
+        {
+            this.service = Service;
         }
     }
 }
