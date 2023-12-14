@@ -148,12 +148,16 @@ namespace UpvTube.BusinessLogic.Services
 
         public void RegisterNewUser(string email, string fullname, string nick, string password)
         {
-            if (dal.GetWhere<Member>((member) => member.Nick == nick || member.Email == email).Count() == 0)
+            if(dal.GetWhere<Member>((member) => member.Nick == nick).Count()>0)
+                throw new ServiceException("Member with this nick already exists.");
+
+            else if (dal.GetWhere<Member>((member) =>  member.Email == email).Count() > 0)
+                throw new ServiceException("Member with this email already exists.");
+            else
             {
                 dal.Insert<Member>(new Member(email, fullname, DateTime.Now, nick, password));
                 dal.Commit();
             }
-            else throw new ServiceException("Member already exists.");
         }
 
         public ICollection<Content> GetAllContents()
