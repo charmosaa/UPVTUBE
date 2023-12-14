@@ -19,6 +19,11 @@ namespace UpvTube.BusinessLogic.Services
             this.logged = null;
         }
 
+        public bool IsLoggedIn()
+        {
+            return logged != null;
+        }
+
         public void RemoveAllData()
         {
             this.dal.RemoveAllData();
