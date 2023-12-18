@@ -16,6 +16,7 @@ namespace UPVTubeGUI
 
         public IUPVTubeService service;
         private LogInForm logInForm;
+        private RegisterForm registerForm;
 
         public UPVTubeBase()
         {
@@ -74,6 +75,14 @@ namespace UPVTubeGUI
             service.RemoveAllData();
             UpdateMenuBarVisibility();
             MessageBox.Show(this, "Database has been cleared", "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void registerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            registerForm = new RegisterForm(service);
+            registerForm.ShowDialog();
+            this.Close();
         }
     }
 }
