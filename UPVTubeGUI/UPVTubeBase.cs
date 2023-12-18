@@ -63,6 +63,10 @@ namespace UPVTubeGUI
             service.Logout();
             UpdateMenuBarVisibility();
             MessageBox.Show(this, "You have been logged out", "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            this.Hide();
+            logInForm = new LogInForm(service);
+            logInForm.ShowDialog();
+            this.Close();
         }
 
         private void clearDBToolStripMenuItem1_Click(object sender, EventArgs e)
