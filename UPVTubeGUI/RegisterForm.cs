@@ -17,7 +17,6 @@ namespace UPVTubeGUI
         public RegisterForm(IUPVTubeService service) : base(service)
         {
             InitializeComponent();
-            service.DBInitialization();
         }
 
         private void registerButton_Click(object sender, EventArgs e)

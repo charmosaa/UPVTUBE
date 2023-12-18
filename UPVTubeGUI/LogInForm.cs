@@ -24,13 +24,16 @@ namespace UPVTubeGUI
             try
             {
                 service.Login(nickInput.Text, passwordInput.Text);
-                DialogResult answer = MessageBox.Show(this, "user logged in", "info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                DialogResult answer = MessageBox.Show(this, "User logged in", "info", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch(ServiceException ex)
             {
                 DialogResult answer = MessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-    
+            finally
+            {
+                base.UpdateMenuBarVisibility();
+            }
         }
     }
 }
