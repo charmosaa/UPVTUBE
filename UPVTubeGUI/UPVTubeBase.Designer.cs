@@ -224,8 +224,9 @@
             // pendingToolStripMenuItem
             // 
             this.pendingToolStripMenuItem.Name = "pendingToolStripMenuItem";
-            this.pendingToolStripMenuItem.Size = new System.Drawing.Size(145, 26);
+            this.pendingToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.pendingToolStripMenuItem.Text = "Pending";
+            this.pendingToolStripMenuItem.Click += new System.EventHandler(this.pendingToolStripMenuItem_Click);
             // 
             // UPVTubeBase
             // 

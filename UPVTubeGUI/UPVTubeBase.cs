@@ -18,6 +18,8 @@ namespace UPVTubeGUI
         public IUPVTubeService service;
         private LogInForm logInForm;
         private RegisterForm registerForm;
+        private SingleContent singleContent;
+        private UPVTubeApp upvTubeApp;
 
         public UPVTubeBase()
         {
@@ -91,6 +93,10 @@ namespace UPVTubeGUI
             {
                 service.RemoveAllData();
                 UpdateMenuBarVisibility();
+                this.Hide();
+                upvTubeApp = new UPVTubeApp(service);
+                upvTubeApp.ShowDialog();
+                this.Close();
                 MessageBox.Show(this, "Database has been cleared", "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (ServiceException ex)
@@ -104,6 +110,15 @@ namespace UPVTubeGUI
             this.Hide();
             registerForm = new RegisterForm(service);
             registerForm.ShowDialog();
+            this.Close();
+        }
+
+        private void pendingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // TODO: Replace with actual content list (of all or just unathorized) and then move from the route to single content.
+            this.Hide();
+            singleContent = new SingleContent(service, service.GetAllContents().ToArray()[3]);
+            singleContent.ShowDialog();
             this.Close();
         }
     }

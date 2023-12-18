@@ -24,6 +24,11 @@ namespace UpvTube.BusinessLogic.Services
             return logged != null;
         }
 
+        public bool isTeacherLogged()
+        {
+            return logged != null && Domains.IsTeacherDomain(logged.Email);
+        }
+
         public void RemoveAllData()
         {
             this.logged = null;
@@ -71,11 +76,16 @@ namespace UpvTube.BusinessLogic.Services
             RegisterNewUser("mlopian@inf.upv.es", "Martyna Lopianiak", "mlopian", "12345678");
             RegisterNewUser("fjaen@dsic.upv.es", "Francisco Javier Jaén Martínez", "fjaen", "upv2023");
 
+            // Already authorized
             Login("fjaen", "upv2023");
-            UploadNewContent("https://example.com", "Example content", true, "Example Content", new List<Subject> { s1, s3 });
             UploadNewContent("https://upv.es", "The UPV Website", true, "UPV Website", new List<Subject> { s4 });
             UploadNewContent("https://poliformat.upv.es", "The PoliformaT platform", false, "PoliformaT", new List<Subject> { s2 });
             UploadNewContent("https://dev.azure.com", "Azure DevOps Website", true, "Azure DevOps", new List<Subject> { s1 });
+            Logout();
+
+            // To be authorized
+            Login("mlopian", "12345678");
+            UploadNewContent("https://example.com", "Example content", true, "Example Content", new List<Subject> { s1, s3 });
             Logout();
         }
 

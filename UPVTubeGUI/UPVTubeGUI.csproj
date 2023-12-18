@@ -54,6 +54,9 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="UPVTubePersistenceTests">
+      <HintPath>..\UPVTubePersistenceTests\obj\Debug\UPVTubePersistenceTests.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LogInForm.cs">
@@ -67,6 +70,12 @@
     </Compile>
     <Compile Include="RegisterForm.Designer.cs">
       <DependentUpon>RegisterForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SingleContent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SingleContent.Designer.cs">
+      <DependentUpon>SingleContent.cs</DependentUpon>
     </Compile>
     <Compile Include="UPVTubeApp.cs">
       <SubType>Form</SubType>
@@ -84,6 +93,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="LogInForm.resx">
       <DependentUpon>LogInForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SingleContent.resx">
+      <DependentUpon>SingleContent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UPVTubeApp.resx">
       <DependentUpon>UPVTubeApp.cs</DependentUpon>
