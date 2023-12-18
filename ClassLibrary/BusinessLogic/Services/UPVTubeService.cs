@@ -80,12 +80,12 @@ namespace UpvTube.BusinessLogic.Services
             Login("fjaen", "upv2023");
             UploadNewContent("https://upv.es", "The UPV Website", true, "UPV Website", new List<Subject> { s4 });
             UploadNewContent("https://poliformat.upv.es", "The PoliformaT platform", false, "PoliformaT", new List<Subject> { s2 });
-            UploadNewContent("https://dev.azure.com", "Azure DevOps Website", true, "Azure DevOps", new List<Subject> { s1 });
             Logout();
 
             // To be authorized
             Login("mlopian", "12345678");
             UploadNewContent("https://example.com", "Example content", true, "Example Content", new List<Subject> { s1, s3 });
+            UploadNewContent("https://dev.azure.com", "Azure DevOps Website", true, "Azure DevOps", new List<Subject> { s1 });
             Logout();
         }
 

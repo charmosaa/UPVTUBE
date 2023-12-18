@@ -32,7 +32,9 @@
             this.contentDetails = new System.Windows.Forms.Label();
             this.contentDescription = new System.Windows.Forms.Label();
             this.contentUrl = new System.Windows.Forms.LinkLabel();
-            this.evaluationButton = new System.Windows.Forms.Button();
+            this.evaluationAcceptButton = new System.Windows.Forms.Button();
+            this.evaluationRejectButton = new System.Windows.Forms.Button();
+            this.authLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // contentTitle
@@ -74,21 +76,43 @@
             this.contentUrl.TabStop = true;
             this.contentUrl.Text = "link";
             // 
-            // evaluationButton
+            // evaluationAcceptButton
             // 
-            this.evaluationButton.Location = new System.Drawing.Point(88, 258);
-            this.evaluationButton.Name = "evaluationButton";
-            this.evaluationButton.Size = new System.Drawing.Size(96, 34);
-            this.evaluationButton.TabIndex = 8;
-            this.evaluationButton.Text = "Evaluate";
-            this.evaluationButton.UseVisualStyleBackColor = true;
+            this.evaluationAcceptButton.Location = new System.Drawing.Point(88, 258);
+            this.evaluationAcceptButton.Name = "evaluationAcceptButton";
+            this.evaluationAcceptButton.Size = new System.Drawing.Size(96, 34);
+            this.evaluationAcceptButton.TabIndex = 8;
+            this.evaluationAcceptButton.Text = "Accept";
+            this.evaluationAcceptButton.UseVisualStyleBackColor = true;
+            this.evaluationAcceptButton.Click += new System.EventHandler(this.evaluationButton_Click);
+            // 
+            // evaluationRejectButton
+            // 
+            this.evaluationRejectButton.Location = new System.Drawing.Point(190, 258);
+            this.evaluationRejectButton.Name = "evaluationRejectButton";
+            this.evaluationRejectButton.Size = new System.Drawing.Size(96, 34);
+            this.evaluationRejectButton.TabIndex = 9;
+            this.evaluationRejectButton.Text = "Reject";
+            this.evaluationRejectButton.UseVisualStyleBackColor = true;
+            this.evaluationRejectButton.Click += new System.EventHandler(this.evaluationRejectButton_Click);
+            // 
+            // authLabel
+            // 
+            this.authLabel.AutoSize = true;
+            this.authLabel.Location = new System.Drawing.Point(85, 239);
+            this.authLabel.Name = "authLabel";
+            this.authLabel.Size = new System.Drawing.Size(151, 16);
+            this.authLabel.TabIndex = 10;
+            this.authLabel.Text = "Content is not authorized";
             // 
             // SingleContent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.evaluationButton);
+            this.Controls.Add(this.authLabel);
+            this.Controls.Add(this.evaluationRejectButton);
+            this.Controls.Add(this.evaluationAcceptButton);
             this.Controls.Add(this.contentUrl);
             this.Controls.Add(this.contentDescription);
             this.Controls.Add(this.contentDetails);
@@ -99,7 +123,9 @@
             this.Controls.SetChildIndex(this.contentDetails, 0);
             this.Controls.SetChildIndex(this.contentDescription, 0);
             this.Controls.SetChildIndex(this.contentUrl, 0);
-            this.Controls.SetChildIndex(this.evaluationButton, 0);
+            this.Controls.SetChildIndex(this.evaluationAcceptButton, 0);
+            this.Controls.SetChildIndex(this.evaluationRejectButton, 0);
+            this.Controls.SetChildIndex(this.authLabel, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -111,6 +137,8 @@
         private System.Windows.Forms.Label contentDetails;
         private System.Windows.Forms.Label contentDescription;
         private System.Windows.Forms.LinkLabel contentUrl;
-        private System.Windows.Forms.Button evaluationButton;
+        private System.Windows.Forms.Button evaluationAcceptButton;
+        private System.Windows.Forms.Button evaluationRejectButton;
+        private System.Windows.Forms.Label authLabel;
     }
 }

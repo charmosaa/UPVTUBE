@@ -93,11 +93,11 @@ namespace UPVTubeGUI
             {
                 service.RemoveAllData();
                 UpdateMenuBarVisibility();
+                MessageBox.Show(this, "Database has been cleared", "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Hide();
                 upvTubeApp = new UPVTubeApp(service);
                 upvTubeApp.ShowDialog();
                 this.Close();
-                MessageBox.Show(this, "Database has been cleared", "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (ServiceException ex)
             {
