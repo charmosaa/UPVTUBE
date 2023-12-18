@@ -59,6 +59,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EvaluationRejectionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EvaluationRejectionForm.Designer.cs">
+      <DependentUpon>EvaluationRejectionForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="LogInForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +97,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="EvaluationRejectionForm.resx">
+      <DependentUpon>EvaluationRejectionForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LogInForm.resx">
       <DependentUpon>LogInForm.cs</DependentUpon>
     </EmbeddedResource>

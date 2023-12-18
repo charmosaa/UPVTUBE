@@ -9,16 +9,25 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using UpvTube.BusinessLogic.Services;
 using UPVTube.Entities;
+using UPVTube.Services;
 
 namespace UPVTubeGUI
 {
     public partial class SingleContent : UPVTubeBase
     {
         private Content content;
+        private EvaluationRejectionForm evaluationRejectionForm;
 
         private void UpdateEvaluationButtonsVisibility()
         {
-            this.evaluationButton.Visible = this.content.Authorized == Authorized.Pending && service.isTeacherLogged();
+            bool isVisible = this.content.Authorized == Authorized.Pending && service.isTeacherLogged();
+            this.evaluationAcceptButton.Visible = isVisible;
+            this.evaluationRejectButton.Visible = isVisible;
+        }
+
+        private void UpdateAuthorizationInfo()
+        {
+            this.authLabel.Text = content.Authorized == Authorized.Yes ? "Content is authorized" : "Content is not authorized";
         }
 
         public SingleContent(IUPVTubeService service, Content content) : base(service)
@@ -30,6 +39,29 @@ namespace UPVTubeGUI
             this.contentDescription.Text = content.Description;
             this.contentUrl.Text = content.ContentURI;
             UpdateEvaluationButtonsVisibility();
+            UpdateAuthorizationInfo();
+        }
+
+        private void evaluationButton_Click(object sender, EventArgs e)
+        {
+            try { 
+                service.AddReviewToPendingContent(content, null);
+                MessageBox.Show(this, "Evaluation of the content has been added.", "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                UpdateEvaluationButtonsVisibility();
+                UpdateAuthorizationInfo();
+            }
+            catch(ServiceException ex)
+            {
+                MessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void evaluationRejectButton_Click(object sender, EventArgs e)
+        {
+            evaluationRejectionForm = new EvaluationRejectionForm(service, content);
+            DialogResult result = evaluationRejectionForm.ShowDialog();
+            UpdateEvaluationButtonsVisibility();
+            UpdateAuthorizationInfo();
         }
     }
 }
