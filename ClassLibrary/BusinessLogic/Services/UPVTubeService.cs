@@ -67,8 +67,8 @@ namespace UpvTube.BusinessLogic.Services
             Subject s4 = new Subject(11560, "Sistemas inteligentes", "SIN");
             AddSubject(s4);
 
-            RegisterNewUser("lmantov@alumno.upv.es", "Leonardo Mantovani", "lmantov", "passw0rd");
-            RegisterNewUser("mlopian@alumno.upv.es", "Martyna Lopianiak", "mlopian", "12345678");
+            RegisterNewUser("lmantov@inf.upv.es", "Leonardo Mantovani", "lmantov", "passw0rd");
+            RegisterNewUser("mlopian@inf.upv.es", "Martyna Lopianiak", "mlopian", "12345678");
             RegisterNewUser("fjaen@dsic.upv.es", "Francisco Javier Jaén Martínez", "fjaen", "upv2023");
 
             Login("fjaen", "upv2023");
@@ -93,6 +93,7 @@ namespace UpvTube.BusinessLogic.Services
 
             Evaluation eval = new Evaluation(DateTime.Now, justification, logged, content);
             content.Evaluation = eval;
+            logged.Evaluations.Add(eval);
             if (justification == null)
             {
                 content.Authorized = Authorized.Yes;
@@ -154,10 +155,10 @@ namespace UpvTube.BusinessLogic.Services
 
         public void RegisterNewUser(string email, string fullname, string nick, string password)
         {
-            if(dal.GetWhere<Member>((member) => member.Nick == nick).Count()>0)
+            if (dal.GetWhere<Member>((member) => member.Nick == nick).Count() > 0)
                 throw new ServiceException("Member with this nick already exists.");
 
-            else if (dal.GetWhere<Member>((member) =>  member.Email == email).Count() > 0)
+            else if (dal.GetWhere<Member>((member) => member.Email == email).Count() > 0)
                 throw new ServiceException("Member with this email already exists.");
             else
             {
@@ -227,6 +228,16 @@ namespace UpvTube.BusinessLogic.Services
             if (subjects.Count() > 3)
             {
                 throw new ServiceException("You can't add more than 3 subjects.");
+            }
+
+            if (contentURI == null || contentURI == "")
+            {
+                throw new ServiceException("Content URI can't be empty.");
+            }
+
+            if (title == null || title == "")
+            {
+                throw new ServiceException("Title can't be empty");
             }
 
             Content newContent = new Content(contentURI, description, isPublic, title, DateTime.Now, logged);
