@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UpvTube.BusinessLogic.Services;
+using UPVTube.Services;
 
 namespace UPVTubeGUI
 {
@@ -37,8 +38,15 @@ namespace UPVTubeGUI
 
         private void initializeDBToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            service.DBInitialization();
-            MessageBox.Show(this, "Database has been initialized", "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            try
+            {
+                service.DBInitialization();
+                MessageBox.Show(this, "Database has been initialized", "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (ServiceException ex)
+            {
+                MessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void loginToolStripMenuItem_Click(object sender, EventArgs e)
@@ -61,20 +69,34 @@ namespace UPVTubeGUI
 
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            service.Logout();
-            UpdateMenuBarVisibility();
-            MessageBox.Show(this, "You have been logged out", "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            this.Hide();
-            logInForm = new LogInForm(service);
-            logInForm.ShowDialog();
-            this.Close();
+            try
+            {
+                service.Logout();
+                UpdateMenuBarVisibility();
+                MessageBox.Show(this, "You have been logged out", "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Hide();
+                logInForm = new LogInForm(service);
+                logInForm.ShowDialog();
+                this.Close();
+            }
+            catch (ServiceException ex)
+            {
+                MessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void clearDBToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            service.RemoveAllData();
-            UpdateMenuBarVisibility();
-            MessageBox.Show(this, "Database has been cleared", "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            try
+            {
+                service.RemoveAllData();
+                UpdateMenuBarVisibility();
+                MessageBox.Show(this, "Database has been cleared", "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (ServiceException ex)
+            {
+                MessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void registerToolStripMenuItem_Click(object sender, EventArgs e)
