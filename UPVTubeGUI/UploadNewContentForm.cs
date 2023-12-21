@@ -30,6 +30,16 @@ namespace UPVTubeGUI
                 subjectsListBox.Items.Add(s);
             }
         }
+
+        private void ClearInputs()
+        {
+            titleInput.Text = "";
+            descriptionInput.Text = "";
+            uriInput.Text = "";
+            isPublicCheckbox.Checked = false;
+            subjectsListBox.ClearSelected();
+        }
+
         private void subjectsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             int selectedCount = subjectsListBox.SelectedItems.Count;
@@ -59,6 +69,17 @@ namespace UPVTubeGUI
             try
             {
                 service.UploadNewContent(contentURI, description, isPublic, title, selectedSubjects);
+                DialogResult result = MessageBox.Show("New Content Uploaded Successfully!\nWould you like to add another one?\nIf not, the content list will open.", "Success", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if (result == DialogResult.Yes)
+                {
+                    ClearInputs();
+                }
+                else if (result == DialogResult.No)
+                {
+                    // TODO
+                    // close this form and open the content list form
+                    // this.Close();
+                }
             }
             catch (Exception ex)
             {
