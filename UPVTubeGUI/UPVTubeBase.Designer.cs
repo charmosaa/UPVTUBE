@@ -56,13 +56,15 @@
             // 
             // menuStripLoggedOut
             // 
+            this.menuStripLoggedOut.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStripLoggedOut.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStripLoggedOut.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.systemToolStripMenuItem,
             this.userToolStripMenuItem});
             this.menuStripLoggedOut.Location = new System.Drawing.Point(0, 0);
             this.menuStripLoggedOut.Name = "menuStripLoggedOut";
-            this.menuStripLoggedOut.Size = new System.Drawing.Size(732, 28);
+            this.menuStripLoggedOut.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
+            this.menuStripLoggedOut.Size = new System.Drawing.Size(824, 33);
             this.menuStripLoggedOut.TabIndex = 2;
             this.menuStripLoggedOut.Text = "menuStripLogout";
             // 
@@ -74,32 +76,32 @@
             this.toolStripMenuItem1,
             this.exitToolStripMenuItem});
             this.systemToolStripMenuItem.Name = "systemToolStripMenuItem";
-            this.systemToolStripMenuItem.Size = new System.Drawing.Size(70, 24);
+            this.systemToolStripMenuItem.Size = new System.Drawing.Size(85, 29);
             this.systemToolStripMenuItem.Text = "System";
             // 
             // initializeDBToolStripMenuItem
             // 
             this.initializeDBToolStripMenuItem.Name = "initializeDBToolStripMenuItem";
-            this.initializeDBToolStripMenuItem.Size = new System.Drawing.Size(172, 26);
+            this.initializeDBToolStripMenuItem.Size = new System.Drawing.Size(205, 34);
             this.initializeDBToolStripMenuItem.Text = "Initialize DB";
             this.initializeDBToolStripMenuItem.Click += new System.EventHandler(this.initializeDBToolStripMenuItem_Click_1);
             // 
             // clearDBToolStripMenuItem
             // 
             this.clearDBToolStripMenuItem.Name = "clearDBToolStripMenuItem";
-            this.clearDBToolStripMenuItem.Size = new System.Drawing.Size(172, 26);
+            this.clearDBToolStripMenuItem.Size = new System.Drawing.Size(205, 34);
             this.clearDBToolStripMenuItem.Text = "Clear DB";
             this.clearDBToolStripMenuItem.Click += new System.EventHandler(this.clearDBToolStripMenuItem1_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(169, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(202, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(172, 26);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(205, 34);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click_1);
             // 
@@ -109,33 +111,35 @@
             this.loginToolStripMenuItem,
             this.registerToolStripMenuItem});
             this.userToolStripMenuItem.Name = "userToolStripMenuItem";
-            this.userToolStripMenuItem.Size = new System.Drawing.Size(52, 24);
+            this.userToolStripMenuItem.Size = new System.Drawing.Size(63, 29);
             this.userToolStripMenuItem.Text = "User";
             // 
             // loginToolStripMenuItem
             // 
             this.loginToolStripMenuItem.Name = "loginToolStripMenuItem";
-            this.loginToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.loginToolStripMenuItem.Size = new System.Drawing.Size(177, 34);
             this.loginToolStripMenuItem.Text = "Login";
             this.loginToolStripMenuItem.Click += new System.EventHandler(this.loginToolStripMenuItem_Click);
             // 
             // registerToolStripMenuItem
             // 
             this.registerToolStripMenuItem.Name = "registerToolStripMenuItem";
-            this.registerToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.registerToolStripMenuItem.Size = new System.Drawing.Size(177, 34);
             this.registerToolStripMenuItem.Text = "Register";
             this.registerToolStripMenuItem.Click += new System.EventHandler(this.registerToolStripMenuItem_Click);
             // 
             // menuStripLoggedIn
             // 
+            this.menuStripLoggedIn.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStripLoggedIn.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStripLoggedIn.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem2,
             this.toolStripMenuItem5,
             this.contentToolStripMenuItem});
-            this.menuStripLoggedIn.Location = new System.Drawing.Point(0, 28);
+            this.menuStripLoggedIn.Location = new System.Drawing.Point(0, 33);
             this.menuStripLoggedIn.Name = "menuStripLoggedIn";
-            this.menuStripLoggedIn.Size = new System.Drawing.Size(732, 28);
+            this.menuStripLoggedIn.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
+            this.menuStripLoggedIn.Size = new System.Drawing.Size(824, 33);
             this.menuStripLoggedIn.TabIndex = 3;
             this.menuStripLoggedIn.Text = "menuStripLogout";
             // 
@@ -147,32 +151,32 @@
             this.toolStripSeparator1,
             this.toolStripMenuItem4});
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(70, 24);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(85, 29);
             this.toolStripMenuItem2.Text = "System";
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(172, 26);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(205, 34);
             this.toolStripMenuItem3.Text = "Initialize DB";
             this.toolStripMenuItem3.Click += new System.EventHandler(this.initializeDBToolStripMenuItem_Click_1);
             // 
             // clearDBToolStripMenuItem1
             // 
             this.clearDBToolStripMenuItem1.Name = "clearDBToolStripMenuItem1";
-            this.clearDBToolStripMenuItem1.Size = new System.Drawing.Size(172, 26);
+            this.clearDBToolStripMenuItem1.Size = new System.Drawing.Size(205, 34);
             this.clearDBToolStripMenuItem1.Text = "Clear DB";
             this.clearDBToolStripMenuItem1.Click += new System.EventHandler(this.clearDBToolStripMenuItem1_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(169, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(202, 6);
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(172, 26);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(205, 34);
             this.toolStripMenuItem4.Text = "Exit";
             this.toolStripMenuItem4.Click += new System.EventHandler(this.exitToolStripMenuItem_Click_1);
             // 
@@ -182,20 +186,20 @@
             this.toolStripMenuItem6,
             this.logoutToolStripMenuItem});
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(52, 24);
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(63, 29);
             this.toolStripMenuItem5.Text = "User";
             // 
             // toolStripMenuItem6
             // 
             this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(139, 26);
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(270, 34);
             this.toolStripMenuItem6.Text = "Login";
             this.toolStripMenuItem6.Click += new System.EventHandler(this.loginToolStripMenuItem_Click);
             // 
             // logoutToolStripMenuItem
             // 
             this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(139, 26);
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.logoutToolStripMenuItem.Text = "Logout";
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
             // 
@@ -206,35 +210,37 @@
             this.listToolStripMenuItem,
             this.pendingToolStripMenuItem});
             this.contentToolStripMenuItem.Name = "contentToolStripMenuItem";
-            this.contentToolStripMenuItem.Size = new System.Drawing.Size(75, 24);
+            this.contentToolStripMenuItem.Size = new System.Drawing.Size(91, 29);
             this.contentToolStripMenuItem.Text = "Content";
             // 
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(145, 26);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.addToolStripMenuItem.Text = "Add";
+            this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
             // listToolStripMenuItem
             // 
             this.listToolStripMenuItem.Name = "listToolStripMenuItem";
-            this.listToolStripMenuItem.Size = new System.Drawing.Size(145, 26);
+            this.listToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.listToolStripMenuItem.Text = "List";
             // 
             // pendingToolStripMenuItem
             // 
             this.pendingToolStripMenuItem.Name = "pendingToolStripMenuItem";
-            this.pendingToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.pendingToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.pendingToolStripMenuItem.Text = "Pending";
             this.pendingToolStripMenuItem.Click += new System.EventHandler(this.pendingToolStripMenuItem_Click);
             // 
             // UPVTubeBase
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(732, 414);
+            this.ClientSize = new System.Drawing.Size(824, 518);
             this.Controls.Add(this.menuStripLoggedIn);
             this.Controls.Add(this.menuStripLoggedOut);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "UPVTubeBase";
             this.Text = "UPVTubeBase";
             this.Load += new System.EventHandler(this.UPVTubeBase_Load);
