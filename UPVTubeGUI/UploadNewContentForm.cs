@@ -56,7 +56,14 @@ namespace UPVTubeGUI
                 selectedSubjects.Add((Subject)s);
             }
 
-            service.UploadNewContent(contentURI, description, isPublic, title, selectedSubjects);
+            try
+            {
+                service.UploadNewContent(contentURI, description, isPublic, title, selectedSubjects);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
