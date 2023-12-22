@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using UPVTube.Entities;
 using UPVTube.Persistence;
@@ -27,6 +28,11 @@ namespace UpvTube.BusinessLogic.Services
         public bool isTeacherLogged()
         {
             return logged != null && Domains.IsTeacherDomain(logged.Email);
+        }
+
+        public bool isUPVMemberLogged()
+        {
+            return logged != null && Domains.IsUPVMemberDomain(logged.Email);
         }
 
         public void RemoveAllData()
@@ -165,15 +171,20 @@ namespace UpvTube.BusinessLogic.Services
 
         public void RegisterNewUser(string email, string fullname, string nick, string password)
         {
-            if (dal.GetWhere<Member>((member) => member.Nick == nick).Count() > 0)
-                throw new ServiceException("Member with this nick already exists.");
-
-            else if (dal.GetWhere<Member>((member) => member.Email == email).Count() > 0)
-                throw new ServiceException("Member with this email already exists.");
+            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(fullname) || string.IsNullOrEmpty(nick) || string.IsNullOrEmpty(password))
+                throw new ServiceException("Some data is missing - insert all the fields");
             else
             {
-                dal.Insert<Member>(new Member(email, fullname, DateTime.Now, nick, password));
-                dal.Commit();
+                if (dal.GetWhere<Member>((member) => member.Nick == nick).Count() > 0)
+                    throw new ServiceException("Member with this nick already exists.");
+
+                else if (dal.GetWhere<Member>((member) => member.Email == email).Count() > 0)
+                    throw new ServiceException("Member with this email already exists.");
+                else
+                {
+                    dal.Insert<Member>(new Member(email, fullname, DateTime.Now, nick, password));
+                    dal.Commit();
+                }
             }
         }
 
