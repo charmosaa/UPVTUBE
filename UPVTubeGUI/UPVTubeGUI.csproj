@@ -89,6 +89,12 @@
     <Compile Include="SingleContent.Designer.cs">
       <DependentUpon>SingleContent.cs</DependentUpon>
     </Compile>
+    <Compile Include="UploadNewContentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UploadNewContentForm.Designer.cs">
+      <DependentUpon>UploadNewContentForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UPVTubeApp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,6 +126,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RegisterForm.resx">
       <DependentUpon>RegisterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UploadNewContentForm.resx">
+      <DependentUpon>UploadNewContentForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UPVTubeBase.resx">
       <DependentUpon>UPVTubeBase.cs</DependentUpon>
