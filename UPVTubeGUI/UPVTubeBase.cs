@@ -26,7 +26,7 @@ namespace UPVTubeGUI
             InitializeComponent();
         }
     
-        public UPVTubeBase(IUPVTubeService Service):this()
+        public UPVTubeBase(IUPVTubeService Service) : this()
         {
             this.service = Service;
             UpdateMenuBarVisibility();
@@ -55,10 +55,7 @@ namespace UPVTubeGUI
 
         private void loginToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            logInForm = new LogInForm(service);
-            logInForm.ShowDialog();
-            this.Close();
+            goToLogIn();
         }
 
         private void exitToolStripMenuItem_Click_1(object sender, EventArgs e)
