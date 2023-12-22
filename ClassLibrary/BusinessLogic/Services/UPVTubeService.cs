@@ -198,12 +198,12 @@ namespace UpvTube.BusinessLogic.Services
             // Filter by upload date range
             if (startDate != null && endDate != null)
             {
-                contents = contents.Where(c => c.UploadDate >= startDate && c.UploadDate <= endDate);
+                contents = contents.Where(c => c.UploadDate.Date >= startDate.Date && c.UploadDate.Date <= endDate.Date);
             }
             // Filter by owner nick
             if (!string.IsNullOrEmpty(ownerNick))
             {
-                contents = contents.Where(c => c.Owner.Nick == ownerNick);
+                contents = contents.Where(c => c.Owner.Nick.Contains(ownerNick));
             }
             // Filter by title keyword
             if (!string.IsNullOrEmpty(titleKeyword))
@@ -221,6 +221,13 @@ namespace UpvTube.BusinessLogic.Services
         public ICollection<Subject> GetAllSubjects()
         {
             return dal.GetAll<Subject>().ToList();
+        }
+
+        public Visualization GetLastUserVisualization(Content content)
+        {
+            List<Visualization> userViews = content.Visualizations.Where<Visualization>(v => v.Member.Nick == logged.Nick).ToList();
+            userViews.Sort((x, y) => DateTime.Compare(x.VisualizationDate, y.VisualizationDate));
+            return (userViews.Count == 0) ? null : userViews.Last();
         }
 
         public void UploadNewContent(string contentURI, string description, bool isPublic, string title, ICollection<Subject> subjects)

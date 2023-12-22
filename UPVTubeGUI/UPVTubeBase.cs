@@ -18,6 +18,7 @@ namespace UPVTubeGUI
         public IUPVTubeService service;
         private LogInForm logInForm;
         private RegisterForm registerForm;
+        private SearchForm searchForm;
         private SingleContent singleContent;
         private UPVTubeApp upvTubeApp;
 
@@ -119,6 +120,14 @@ namespace UPVTubeGUI
             this.Hide();
             singleContent = new SingleContent(service, service.GetAllContents().ToArray()[3]);
             singleContent.ShowDialog();
+            this.Close();
+        }
+
+        private void listToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            searchForm = new SearchForm(service);
+            searchForm.ShowDialog();
             this.Close();
         }
     }

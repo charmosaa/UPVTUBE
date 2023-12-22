@@ -15,6 +15,7 @@ namespace UpvTube.BusinessLogic.Services
         ICollection<Content> SearchContent(DateTime startDate, DateTime endDate, string ownerNick, string titleKeyword, Subject subject);
         ICollection<Content> GetAllContents();
         ICollection<Subject> GetAllSubjects();
+        Visualization GetLastUserVisualization(Content content);
         Content DisplayContentDetails(int id);
         void AddReviewToPendingContent(Content content, string justification);
         void RemoveAllData();
