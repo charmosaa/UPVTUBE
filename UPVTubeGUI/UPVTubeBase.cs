@@ -20,12 +20,13 @@ namespace UPVTubeGUI
         private RegisterForm registerForm;
         private SingleContent singleContent;
         private UPVTubeApp upvTubeApp;
+        private UploadNewContentForm uploadNewContentForm;
 
         public UPVTubeBase()
         {
             InitializeComponent();
         }
-    
+
         public UPVTubeBase(IUPVTubeService Service) : this()
         {
             this.service = Service;
@@ -65,7 +66,7 @@ namespace UPVTubeGUI
 
         private void UPVTubeBase_Load(object sender, EventArgs e)
         {
-         
+
         }
 
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -123,6 +124,14 @@ namespace UPVTubeGUI
             this.Hide();
             logInForm = new LogInForm(service);
             logInForm.ShowDialog();
+            this.Close();
+        }
+
+        private void addToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            uploadNewContentForm = new UploadNewContentForm(service);
+            uploadNewContentForm.ShowDialog();
             this.Close();
         }
     }
