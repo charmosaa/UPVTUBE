@@ -186,13 +186,7 @@
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
             this.toolStripMenuItem5.Size = new System.Drawing.Size(63, 29);
             this.toolStripMenuItem5.Text = "User";
-            // 
-            // toolStripMenuItem6
-            // 
-            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(270, 34);
-            this.toolStripMenuItem6.Text = "Login";
-            this.toolStripMenuItem6.Click += new System.EventHandler(this.loginToolStripMenuItem_Click);
+            //
             // 
             // logoutToolStripMenuItem
             // 
