@@ -38,6 +38,8 @@ namespace UPVTubeGUI
         {
             menuStripLoggedIn.Visible = service.IsLoggedIn();
             menuStripLoggedOut.Visible = !service.IsLoggedIn();
+            pendingToolStripMenuItem.Visible = service.isTeacherLogged();
+            addToolStripMenuItem.Visible = service.isUPVMemberLogged();
         }
 
         private void initializeDBToolStripMenuItem_Click_1(object sender, EventArgs e)
@@ -55,10 +57,7 @@ namespace UPVTubeGUI
 
         private void loginToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            logInForm = new LogInForm(service);
-            logInForm.ShowDialog();
-            this.Close();
+            goToLogIn();
         }
 
         private void exitToolStripMenuItem_Click_1(object sender, EventArgs e)
@@ -78,10 +77,7 @@ namespace UPVTubeGUI
                 service.Logout();
                 UpdateMenuBarVisibility();
                 MessageBox.Show(this, "You have been logged out", "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Hide();
-                logInForm = new LogInForm(service);
-                logInForm.ShowDialog();
-                this.Close();
+                goToLogIn();
             }
             catch (ServiceException ex)
             {
@@ -121,6 +117,14 @@ namespace UPVTubeGUI
             this.Hide();
             singleContent = new SingleContent(service, service.GetAllContents().ToArray()[3]);
             singleContent.ShowDialog();
+            this.Close();
+        }
+
+        protected void goToLogIn()
+        {
+            this.Hide();
+            logInForm = new LogInForm(service);
+            logInForm.ShowDialog();
             this.Close();
         }
 

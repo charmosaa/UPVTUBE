@@ -17,6 +17,16 @@ namespace UPVTubeGUI
         public RegisterForm(IUPVTubeService service) : base(service)
         {
             InitializeComponent();
+            this.KeyPress += RegisterForm_EnterPress;
+            this.AcceptButton = registerButton;
+        }
+
+        private void RegisterForm_EnterPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                registerButton.PerformClick();
+            }
         }
 
         private void registerButton_Click(object sender, EventArgs e)
@@ -25,6 +35,7 @@ namespace UPVTubeGUI
             {
                 service.RegisterNewUser(emailTextBox.Text,fullNameTextBox.Text,nickTextBox.Text, passwordTextBox.Text);
                 DialogResult answer = MessageBox.Show(this, "user registered", "info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                base.goToLogIn();
             }
             catch (ServiceException ex)
             {
