@@ -30,11 +30,15 @@ namespace UPVTubeGUI
         {
             try
             {
+                if(this.rejectTextBox.Text.Length ==  0)
+                {
+                    throw new Exception("Give a reason of rejection");
+                }
                 service.AddReviewToPendingContent(content, this.rejectTextBox.Text);
                 MessageBox.Show(this, "Evaluation of the content has been added.", "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Hide();
             }
-            catch(ServiceException ex)
+            catch(Exception ex)
             {
                 MessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
