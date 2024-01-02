@@ -76,9 +76,10 @@ namespace UPVTubeGUI
                 }
                 else if (result == DialogResult.No)
                 {
-                    // TODO
-                    // close this form and open the content list form
-                    // this.Close();
+                    this.Hide();
+                    SearchForm searchForm = new SearchForm(service);
+                    searchForm.ShowDialog();
+                    this.Close();
                 }
             }
             catch (Exception ex)

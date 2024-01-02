@@ -13,10 +13,11 @@ using UPVTube.Services;
 
 namespace UPVTubeGUI
 {
-    public partial class SingleContent : UPVTubeBase
+    public partial class SingleContent : Form
     {
         private Content content;
         private EvaluationRejectionForm evaluationRejectionForm;
+        private IUPVTubeService service;
 
         private void UpdateEvaluationButtonsVisibility()
         {
@@ -30,9 +31,10 @@ namespace UPVTubeGUI
             this.authLabel.Text = content.Authorized == Authorized.Yes ? "Content is authorized" : "Content is not authorized";
         }
 
-        public SingleContent(IUPVTubeService service, Content content) : base(service)
+        public SingleContent(IUPVTubeService service, Content content)
         {
             InitializeComponent();
+            this.service = service;
             this.content = content;
             this.contentTitle.Text = content.Title;
             this.contentDetails.Text = "By " + content.Owner.Nick + " (" + content.UploadDate.Date.ToShortDateString() + ")";

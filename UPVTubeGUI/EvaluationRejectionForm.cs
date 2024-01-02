@@ -16,8 +16,8 @@ namespace UPVTubeGUI
     public partial class EvaluationRejectionForm : Form
     {
 
-        Content content;
-        IUPVTubeService service;
+        private Content content;
+        private IUPVTubeService service;
 
         public EvaluationRejectionForm(IUPVTubeService service, Content content)
         {

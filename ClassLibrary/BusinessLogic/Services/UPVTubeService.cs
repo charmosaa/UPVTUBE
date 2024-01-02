@@ -78,6 +78,7 @@ namespace UpvTube.BusinessLogic.Services
             Subject s4 = new Subject(11560, "Sistemas inteligentes", "SIN");
             AddSubject(s4);
 
+            RegisterNewUser("example@gmail.com", "Karol Waliszewski", "kwalisz", "upv2023");
             RegisterNewUser("lmantov@inf.upv.es", "Leonardo Mantovani", "lmantov", "passw0rd");
             RegisterNewUser("mlopian@inf.upv.es", "Martyna Lopianiak", "mlopian", "12345678");
             RegisterNewUser("fjaen@dsic.upv.es", "Francisco Javier Jaén Martínez", "fjaen", "upv2023");
@@ -193,14 +194,14 @@ namespace UpvTube.BusinessLogic.Services
             return dal.GetAll<Content>().ToList();
         }
 
-        public ICollection<Content> SearchContent(DateTime startDate, DateTime endDate, string ownerNick, string titleKeyword, Subject subject)
+        public ICollection<Content> SearchContent(DateTime startDate, DateTime endDate, string ownerNick, string titleKeyword, Subject subject, Authorized? status)
         {
             if (logged == null)
             {
                 throw new ServiceException("Unathorized");
             }
 
-            IEnumerable<Content> contents = dal.GetWhere<Content>(c => c.Authorized == Authorized.Yes);
+            IEnumerable<Content> contents = dal.GetAll<Content>();
             // Filter by public/private access
             if (!Domains.IsUPVMemberDomain(logged.Email))
             {
@@ -209,12 +210,12 @@ namespace UpvTube.BusinessLogic.Services
             // Filter by upload date range
             if (startDate != null && endDate != null)
             {
-                contents = contents.Where(c => c.UploadDate >= startDate && c.UploadDate <= endDate);
+                contents = contents.Where(c => c.UploadDate.Date >= startDate.Date && c.UploadDate.Date <= endDate.Date);
             }
             // Filter by owner nick
             if (!string.IsNullOrEmpty(ownerNick))
             {
-                contents = contents.Where(c => c.Owner.Nick == ownerNick);
+                contents = contents.Where(c => c.Owner.Nick.Contains(ownerNick));
             }
             // Filter by title keyword
             if (!string.IsNullOrEmpty(titleKeyword))
@@ -226,12 +227,25 @@ namespace UpvTube.BusinessLogic.Services
             {
                 contents = contents.Where(c => c.Subjects.Contains(subject));
             }
+            // Filter by status
+            if (status != null)
+            {
+                contents = contents.Where(c => c.Authorized == status);
+            }
+
             return contents.ToList();
         }
 
         public ICollection<Subject> GetAllSubjects()
         {
             return dal.GetAll<Subject>().ToList();
+        }
+
+        public Visualization GetLastUserVisualization(Content content)
+        {
+            List<Visualization> userViews = content.Visualizations.Where<Visualization>(v => v.Member.Nick == logged.Nick).ToList();
+            userViews.Sort((x, y) => DateTime.Compare(x.VisualizationDate, y.VisualizationDate));
+            return (userViews.Count == 0) ? null : userViews.Last();
         }
 
         public void UploadNewContent(string contentURI, string description, bool isPublic, string title, ICollection<Subject> subjects)
