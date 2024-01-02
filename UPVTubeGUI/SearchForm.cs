@@ -73,5 +73,22 @@ namespace UPVTubeGUI
             // Use the just populated bindingList as data source for the grid view
             contentsBindingSource.DataSource = bindingList;
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Content c = service.SearchContent(
+                startDate: startingDatePicker.MinDate,
+                endDate: startingDatePicker.MaxDate,
+                ownerNick: dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString(),
+                titleKeyword: dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString(),
+                subject: null
+            ).ToList()[0];
+
+            if ( c != null )
+            {
+                SingleContent singleContentForm = new SingleContent(service, c);
+                singleContentForm.Show();
+            }
+        }
     }
 }

@@ -69,13 +69,14 @@
             this.relatedSubject,
             this.lastViewDate});
             this.dataGridView1.DataSource = this.contentsBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(9, 160);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 197);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(716, 190);
+            this.dataGridView1.Size = new System.Drawing.Size(955, 234);
             this.dataGridView1.TabIndex = 4;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // title
             // 
@@ -137,8 +138,7 @@
             // 
             this.searchByDateLbl.AutoSize = true;
             this.searchByDateLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchByDateLbl.Location = new System.Drawing.Point(9, 40);
-            this.searchByDateLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.searchByDateLbl.Location = new System.Drawing.Point(12, 49);
             this.searchByDateLbl.Name = "searchByDateLbl";
             this.searchByDateLbl.Size = new System.Drawing.Size(99, 13);
             this.searchByDateLbl.TabIndex = 5;
@@ -147,10 +147,9 @@
             // startingDateLbl
             // 
             this.startingDateLbl.AutoSize = true;
-            this.startingDateLbl.Location = new System.Drawing.Point(127, 40);
-            this.startingDateLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.startingDateLbl.Location = new System.Drawing.Point(169, 49);
             this.startingDateLbl.Name = "startingDateLbl";
-            this.startingDateLbl.Size = new System.Drawing.Size(30, 13);
+            this.startingDateLbl.Size = new System.Drawing.Size(36, 16);
             this.startingDateLbl.TabIndex = 6;
             this.startingDateLbl.Text = "from:";
             // 
@@ -159,11 +158,11 @@
             this.startingDatePicker.Checked = false;
             this.startingDatePicker.CustomFormat = " dd/MM/yyyy";
             this.startingDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.startingDatePicker.Location = new System.Drawing.Point(161, 37);
-            this.startingDatePicker.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.startingDatePicker.Location = new System.Drawing.Point(215, 46);
+            this.startingDatePicker.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.startingDatePicker.Name = "startingDatePicker";
             this.startingDatePicker.ShowCheckBox = true;
-            this.startingDatePicker.Size = new System.Drawing.Size(91, 20);
+            this.startingDatePicker.Size = new System.Drawing.Size(120, 22);
             this.startingDatePicker.TabIndex = 7;
             this.startingDatePicker.Value = new System.DateTime(2023, 12, 21, 0, 0, 0, 0);
             this.startingDatePicker.ValueChanged += new System.EventHandler(this.updateSearchResults);
@@ -171,10 +170,9 @@
             // endDateLbl
             // 
             this.endDateLbl.AutoSize = true;
-            this.endDateLbl.Location = new System.Drawing.Point(257, 40);
-            this.endDateLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.endDateLbl.Location = new System.Drawing.Point(343, 49);
             this.endDateLbl.Name = "endDateLbl";
-            this.endDateLbl.Size = new System.Drawing.Size(19, 13);
+            this.endDateLbl.Size = new System.Drawing.Size(21, 16);
             this.endDateLbl.TabIndex = 8;
             this.endDateLbl.Text = "to:";
             // 
@@ -183,11 +181,11 @@
             this.endDatePicker.Checked = false;
             this.endDatePicker.CustomFormat = " dd/MM/yyyy";
             this.endDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.endDatePicker.Location = new System.Drawing.Point(280, 37);
-            this.endDatePicker.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.endDatePicker.Location = new System.Drawing.Point(373, 46);
+            this.endDatePicker.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.endDatePicker.Name = "endDatePicker";
             this.endDatePicker.ShowCheckBox = true;
-            this.endDatePicker.Size = new System.Drawing.Size(91, 20);
+            this.endDatePicker.Size = new System.Drawing.Size(120, 22);
             this.endDatePicker.TabIndex = 9;
             this.endDatePicker.Value = new System.DateTime(2023, 12, 22, 0, 0, 0, 0);
             this.endDatePicker.ValueChanged += new System.EventHandler(this.updateSearchResults);
@@ -196,8 +194,7 @@
             // 
             this.searchByAuthorLbl.AutoSize = true;
             this.searchByAuthorLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchByAuthorLbl.Location = new System.Drawing.Point(9, 70);
-            this.searchByAuthorLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.searchByAuthorLbl.Location = new System.Drawing.Point(12, 86);
             this.searchByAuthorLbl.Name = "searchByAuthorLbl";
             this.searchByAuthorLbl.Size = new System.Drawing.Size(109, 13);
             this.searchByAuthorLbl.TabIndex = 10;
@@ -205,10 +202,10 @@
             // 
             // authorTextBox
             // 
-            this.authorTextBox.Location = new System.Drawing.Point(130, 67);
-            this.authorTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.authorTextBox.Location = new System.Drawing.Point(173, 82);
+            this.authorTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.authorTextBox.Name = "authorTextBox";
-            this.authorTextBox.Size = new System.Drawing.Size(241, 20);
+            this.authorTextBox.Size = new System.Drawing.Size(320, 22);
             this.authorTextBox.TabIndex = 11;
             this.authorTextBox.TextChanged += new System.EventHandler(this.updateSearchResults);
             // 
@@ -216,8 +213,7 @@
             // 
             this.searchByTitleLbl.AutoSize = true;
             this.searchByTitleLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchByTitleLbl.Location = new System.Drawing.Point(9, 100);
-            this.searchByTitleLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.searchByTitleLbl.Location = new System.Drawing.Point(12, 123);
             this.searchByTitleLbl.Name = "searchByTitleLbl";
             this.searchByTitleLbl.Size = new System.Drawing.Size(97, 13);
             this.searchByTitleLbl.TabIndex = 12;
@@ -225,10 +221,10 @@
             // 
             // titleTextBox
             // 
-            this.titleTextBox.Location = new System.Drawing.Point(130, 97);
-            this.titleTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.titleTextBox.Location = new System.Drawing.Point(173, 119);
+            this.titleTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.titleTextBox.Name = "titleTextBox";
-            this.titleTextBox.Size = new System.Drawing.Size(241, 20);
+            this.titleTextBox.Size = new System.Drawing.Size(320, 22);
             this.titleTextBox.TabIndex = 13;
             this.titleTextBox.TextChanged += new System.EventHandler(this.updateSearchResults);
             // 
@@ -236,8 +232,7 @@
             // 
             this.searchBySubjectLbl.AutoSize = true;
             this.searchBySubjectLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchBySubjectLbl.Location = new System.Drawing.Point(9, 130);
-            this.searchBySubjectLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.searchBySubjectLbl.Location = new System.Drawing.Point(12, 160);
             this.searchBySubjectLbl.Name = "searchBySubjectLbl";
             this.searchBySubjectLbl.Size = new System.Drawing.Size(115, 13);
             this.searchBySubjectLbl.TabIndex = 14;
@@ -246,18 +241,18 @@
             // subjectComboBox
             // 
             this.subjectComboBox.FormattingEnabled = true;
-            this.subjectComboBox.Location = new System.Drawing.Point(130, 127);
-            this.subjectComboBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.subjectComboBox.Location = new System.Drawing.Point(173, 156);
+            this.subjectComboBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.subjectComboBox.Name = "subjectComboBox";
-            this.subjectComboBox.Size = new System.Drawing.Size(241, 21);
+            this.subjectComboBox.Size = new System.Drawing.Size(320, 24);
             this.subjectComboBox.TabIndex = 15;
             this.subjectComboBox.TextChanged += new System.EventHandler(this.updateSearchResults);
             // 
             // SearchForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(734, 361);
+            this.ClientSize = new System.Drawing.Size(979, 444);
             this.Controls.Add(this.subjectComboBox);
             this.Controls.Add(this.searchBySubjectLbl);
             this.Controls.Add(this.titleTextBox);
@@ -270,7 +265,8 @@
             this.Controls.Add(this.startingDateLbl);
             this.Controls.Add(this.searchByDateLbl);
             this.Controls.Add(this.dataGridView1);
-            this.MinimumSize = new System.Drawing.Size(400, 300);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MinimumSize = new System.Drawing.Size(528, 360);
             this.Name = "SearchForm";
             this.Text = "Search";
             this.Controls.SetChildIndex(this.dataGridView1, 0);
