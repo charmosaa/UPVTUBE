@@ -17,6 +17,16 @@ namespace UPVTubeGUI
         public LogInForm(IUPVTubeService service): base(service)
         {
             InitializeComponent();
+            this.KeyPress += LoginForm_EnterPress;
+            this.AcceptButton = logInButton;
+        }
+
+        private void LoginForm_EnterPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                logInButton.PerformClick();
+            }
         }
 
         private void logInButton_Click(object sender, EventArgs e)
