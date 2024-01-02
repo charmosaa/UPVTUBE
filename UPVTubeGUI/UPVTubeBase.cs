@@ -19,7 +19,6 @@ namespace UPVTubeGUI
         private LogInForm logInForm;
         private RegisterForm registerForm;
         private SearchForm searchForm;
-        private SingleContent singleContent;
         private UPVTubeApp upvTubeApp;
         private UploadNewContentForm uploadNewContentForm;
 
@@ -113,10 +112,9 @@ namespace UPVTubeGUI
 
         private void pendingToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // TODO: Replace with actual content list (of all or just unathorized) and then move from the route to single content.
             this.Hide();
-            singleContent = new SingleContent(service, service.GetAllContents().ToArray()[3]);
-            singleContent.ShowDialog();
+            searchForm = new SearchForm(service, UPVTube.Entities.Authorized.Pending);
+            searchForm.ShowDialog();
             this.Close();
         }
 
@@ -139,7 +137,7 @@ namespace UPVTubeGUI
         private void listToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Hide();
-            searchForm = new SearchForm(service);
+            searchForm = new SearchForm(service, UPVTube.Entities.Authorized.Yes);
             searchForm.ShowDialog();
             this.Close();
         }

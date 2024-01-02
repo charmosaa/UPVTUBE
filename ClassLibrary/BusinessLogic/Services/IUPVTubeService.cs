@@ -13,7 +13,7 @@ namespace UpvTube.BusinessLogic.Services
         bool isTeacherLogged();
         bool isUPVMemberLogged();
         void UploadNewContent(string contentURI, string description, bool isPublic, string title, ICollection<Subject> subjects);
-        ICollection<Content> SearchContent(DateTime startDate, DateTime endDate, string ownerNick, string titleKeyword, Subject subject);
+        ICollection<Content> SearchContent(DateTime startDate, DateTime endDate, string ownerNick, string titleKeyword, Subject subject, Authorized? status);
         ICollection<Content> GetAllContents();
         ICollection<Subject> GetAllSubjects();
         Visualization GetLastUserVisualization(Content content);

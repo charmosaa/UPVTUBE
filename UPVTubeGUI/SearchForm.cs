@@ -14,9 +14,22 @@ namespace UPVTubeGUI
 {
     public partial class SearchForm : UPVTubeBase
     {
+
+        private Authorized? statusFilter;
+
         public SearchForm(IUPVTubeService service) : base(service)
         {
             InitializeComponent();
+            LoadSubjects();
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.statusFilter = null;
+        }
+
+        public SearchForm(IUPVTubeService service, Authorized statusFilter) : base(service)
+        {
+            InitializeComponent();
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.statusFilter = statusFilter;
             LoadSubjects();
         }
 
@@ -32,9 +45,13 @@ namespace UPVTubeGUI
             }
             subjectComboBox.SelectedIndex = -1;
             subjectComboBox.ResetText();
-            updateSearchResults(null, null);  //TODO: is it ok?
+            updateSearchResults(); 
         }
 
+        private void updateSearchResults()
+        {
+            this.updateSearchResults(null, null);
+        }
         private void updateSearchResults(object sender, EventArgs e)
         {
             // Get contents in the database that match current searching filters
@@ -43,8 +60,10 @@ namespace UPVTubeGUI
                 endDate: endDatePicker.Checked ? endDatePicker.Value : endDatePicker.MaxDate,
                 ownerNick: authorTextBox.Text,
                 titleKeyword: titleTextBox.Text,
-                subject: subjectComboBox.SelectedIndex == -1 ? null : subjects[subjectComboBox.SelectedIndex]
+                subject: subjectComboBox.SelectedIndex == -1 ? null : subjects[subjectComboBox.SelectedIndex],
+                status: statusFilter
             ).ToList();
+
             // Sort the matching content by upload date (more recent goes first)
             matchingContents.Sort((x, y) => DateTime.Compare(y.UploadDate, x.UploadDate));
 
@@ -81,13 +100,15 @@ namespace UPVTubeGUI
                 endDate: startingDatePicker.MaxDate,
                 ownerNick: dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString(),
                 titleKeyword: dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString(),
-                subject: null
+                subject: null,
+                status: statusFilter // This filter here does not change anything particular, just have to be defined.
             ).ToList()[0];
 
             if (c != null)
             {
                 SingleContent singleContentForm = new SingleContent(service, c);
-                singleContentForm.Show();
+                DialogResult result = singleContentForm.ShowDialog();
+                updateSearchResults(); // Updating the results, because the content could become authorized.
             }
         }
     }

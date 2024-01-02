@@ -74,7 +74,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(955, 234);
+            this.dataGridView1.Size = new System.Drawing.Size(1005, 226);
             this.dataGridView1.TabIndex = 4;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
@@ -140,7 +140,7 @@
             this.searchByDateLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchByDateLbl.Location = new System.Drawing.Point(12, 49);
             this.searchByDateLbl.Name = "searchByDateLbl";
-            this.searchByDateLbl.Size = new System.Drawing.Size(99, 13);
+            this.searchByDateLbl.Size = new System.Drawing.Size(118, 16);
             this.searchByDateLbl.TabIndex = 5;
             this.searchByDateLbl.Text = "Search by Date:";
             // 
@@ -196,7 +196,7 @@
             this.searchByAuthorLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchByAuthorLbl.Location = new System.Drawing.Point(12, 86);
             this.searchByAuthorLbl.Name = "searchByAuthorLbl";
-            this.searchByAuthorLbl.Size = new System.Drawing.Size(109, 13);
+            this.searchByAuthorLbl.Size = new System.Drawing.Size(129, 16);
             this.searchByAuthorLbl.TabIndex = 10;
             this.searchByAuthorLbl.Text = "Search by Author:";
             // 
@@ -215,7 +215,7 @@
             this.searchByTitleLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchByTitleLbl.Location = new System.Drawing.Point(12, 123);
             this.searchByTitleLbl.Name = "searchByTitleLbl";
-            this.searchByTitleLbl.Size = new System.Drawing.Size(97, 13);
+            this.searchByTitleLbl.Size = new System.Drawing.Size(116, 16);
             this.searchByTitleLbl.TabIndex = 12;
             this.searchByTitleLbl.Text = "Search by Title:";
             // 
@@ -234,7 +234,7 @@
             this.searchBySubjectLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchBySubjectLbl.Location = new System.Drawing.Point(12, 160);
             this.searchBySubjectLbl.Name = "searchBySubjectLbl";
-            this.searchBySubjectLbl.Size = new System.Drawing.Size(115, 13);
+            this.searchBySubjectLbl.Size = new System.Drawing.Size(137, 16);
             this.searchBySubjectLbl.TabIndex = 14;
             this.searchBySubjectLbl.Text = "Search by Subject:";
             // 
@@ -252,7 +252,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(979, 444);
+            this.ClientSize = new System.Drawing.Size(1029, 436);
             this.Controls.Add(this.subjectComboBox);
             this.Controls.Add(this.searchBySubjectLbl);
             this.Controls.Add(this.titleTextBox);
