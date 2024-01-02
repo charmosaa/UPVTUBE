@@ -24,5 +24,9 @@ namespace UPVTubeGUI
        
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            base.initializeDB();
+        }
     }
 }

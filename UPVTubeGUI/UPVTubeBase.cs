@@ -41,7 +41,7 @@ namespace UPVTubeGUI
             addToolStripMenuItem.Visible = service.isUPVMemberLogged();
         }
 
-        private void initializeDBToolStripMenuItem_Click_1(object sender, EventArgs e)
+        protected void initializeDB()
         {
             try
             {
@@ -52,6 +52,11 @@ namespace UPVTubeGUI
             {
                 MessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void initializeDBToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            initializeDB();
         }
 
         private void loginToolStripMenuItem_Click(object sender, EventArgs e)
