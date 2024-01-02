@@ -74,7 +74,7 @@ namespace UPVTubeGUI
             contentsBindingSource.DataSource = bindingList;
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             Content c = service.SearchContent(
                 startDate: startingDatePicker.MinDate,
@@ -84,7 +84,7 @@ namespace UPVTubeGUI
                 subject: null
             ).ToList()[0];
 
-            if ( c != null )
+            if (c != null)
             {
                 SingleContent singleContentForm = new SingleContent(service, c);
                 singleContentForm.Show();
