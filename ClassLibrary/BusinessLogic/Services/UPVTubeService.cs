@@ -192,7 +192,7 @@ namespace UpvTube.BusinessLogic.Services
             return dal.GetAll<Content>().ToList();
         }
 
-        public ICollection<Content> SearchContent(DateTime startDate, DateTime endDate, string ownerNick, string titleKeyword, Subject subject, Authorized? status)
+        public ICollection<Content> SearchContent(DateTime startDate, DateTime endDate, string ownerNick, string titleKeyword, Subject subject, Authorized? status, bool exactTitleMatch = false)
         {
             if (logged == null)
             {
@@ -218,7 +218,14 @@ namespace UpvTube.BusinessLogic.Services
             // Filter by title keyword
             if (!string.IsNullOrEmpty(titleKeyword))
             {
-                contents = contents.Where(c => c.Title.Contains(titleKeyword));
+                if (exactTitleMatch)
+                {
+                    contents = contents.Where(c => c.Title == titleKeyword);
+                }
+                else
+                {
+                    contents = contents.Where(c => c.Title.Contains(titleKeyword));
+                }
             }
             // Filter by subject 
             if (subject != null)
@@ -244,6 +251,31 @@ namespace UpvTube.BusinessLogic.Services
             List<Visualization> userViews = content.Visualizations.Where<Visualization>(v => v.Member.Nick == logged.Nick).ToList();
             userViews.Sort((x, y) => DateTime.Compare(x.VisualizationDate, y.VisualizationDate));
             return (userViews.Count == 0) ? null : userViews.Last();
+        }
+
+        public void RegisterVisualization(Content content)
+        {
+            if (logged == null)
+            {
+                throw new ServiceException("Unathorized");
+            }
+            else if (content == null)
+            {
+                throw new ServiceException("Cannot register a visualization for a null content");
+            }
+            Visualization newView = new Visualization(DateTime.Now, content, logged);
+            content.Visualizations.Add(newView);
+            logged.Visualizations.Add(newView);
+
+            dal.Insert(newView);
+            dal.Commit();
+        }
+
+        public ICollection<Content> GetViewsHistory()
+        {
+            List<Visualization> userViews = logged.Visualizations.ToList();
+            userViews.Sort((x, y) => DateTime.Compare(y.VisualizationDate, x.VisualizationDate));  // sort the views in descending order
+            return userViews.Select(v => v.Content).Distinct().ToList();  // return the viewed content
         }
 
         public void UploadNewContent(string contentURI, string description, bool isPublic, string title, ICollection<Subject> subjects)
