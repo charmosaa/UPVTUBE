@@ -42,6 +42,7 @@ namespace UPVTubeGUI
             this.contentUrl.Text = content.ContentURI;
             UpdateEvaluationButtonsVisibility();
             UpdateAuthorizationInfo();
+            service.RegisterVisualization(content);
         }
 
         private void evaluationButton_Click(object sender, EventArgs e)

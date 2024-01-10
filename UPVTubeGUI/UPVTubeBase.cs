@@ -18,7 +18,8 @@ namespace UPVTubeGUI
         public IUPVTubeService service;
         private LogInForm logInForm;
         private RegisterForm registerForm;
-        protected SearchForm searchForm;
+        private SearchForm searchForm;
+        private HistoryForm historyForm;
         private UPVTubeApp upvTubeApp;
         private UploadNewContentForm uploadNewContentForm;
 
@@ -39,6 +40,7 @@ namespace UPVTubeGUI
             menuStripLoggedOut.Visible = !service.IsLoggedIn();
             pendingToolStripMenuItem.Visible = service.isTeacherLogged();
             addToolStripMenuItem.Visible = service.isUPVMemberLogged();
+            historyToolStripMenuItem.Visible = service.isUPVMemberLogged();
         }
 
         protected void initializeDB()
@@ -144,6 +146,14 @@ namespace UPVTubeGUI
             this.Hide();
             searchForm = new SearchForm(service, UPVTube.Entities.Authorized.Yes);
             searchForm.ShowDialog();
+            this.Close();
+        }
+
+        private void historyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            historyForm = new HistoryForm(service);
+            historyForm.ShowDialog();
             this.Close();
         }
     }
