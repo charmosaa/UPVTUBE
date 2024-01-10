@@ -225,7 +225,7 @@ namespace UpvTube.BusinessLogic.Services
             return contents.ToList();
         }
 
-        public ICollection<Content> SearchContent(DateTime startDate, DateTime endDate, string ownerNick, string titleKeyword, Subject subject, Authorized? status)
+        public ICollection<Content> SearchContent(DateTime startDate, DateTime endDate, string ownerNick, string titleKeyword, Subject subject, Authorized? status, bool exactTitleMatch = false)
         {
             if (logged == null)
             {
