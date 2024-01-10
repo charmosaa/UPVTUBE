@@ -20,6 +20,7 @@ namespace UPVTubeGUI
         private RegisterForm registerForm;
         private SearchForm searchForm;
         private HistoryForm historyForm;
+        private SubscriptionsForm subscriptionsForm;
         private UPVTubeApp upvTubeApp;
         private UploadNewContentForm uploadNewContentForm;
 
@@ -154,6 +155,14 @@ namespace UPVTubeGUI
             this.Hide();
             historyForm = new HistoryForm(service);
             historyForm.ShowDialog();
+            this.Close();
+        }
+
+        private void subscribedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            subscriptionsForm = new SubscriptionsForm(service);
+            subscriptionsForm.ShowDialog();
             this.Close();
         }
     }

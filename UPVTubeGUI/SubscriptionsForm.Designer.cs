@@ -49,11 +49,12 @@
             // contentTable
             // 
             this.contentTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.contentTable.Location = new System.Drawing.Point(12, 59);
+            this.contentTable.Location = new System.Drawing.Point(14, 74);
+            this.contentTable.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.contentTable.Name = "contentTable";
             this.contentTable.RowHeadersWidth = 51;
             this.contentTable.RowTemplate.Height = 24;
-            this.contentTable.Size = new System.Drawing.Size(708, 343);
+            this.contentTable.Size = new System.Drawing.Size(796, 429);
             this.contentTable.TabIndex = 4;
             this.contentTable.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.contentTable_CellClick);
             // 
@@ -171,10 +172,12 @@
             // 
             // SubscriptionsForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.ClientSize = new System.Drawing.Size(732, 414);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.ClientSize = new System.Drawing.Size(824, 518);
             this.Controls.Add(this.contentTable);
+            this.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.Name = "SubscriptionsForm";
+            this.Text = "Subscribed creators\' content";
             this.Load += new System.EventHandler(this.SubscriptionsForm_Load);
             this.Controls.SetChildIndex(this.contentTable, 0);
             ((System.ComponentModel.ISupportInitialize)(this.contentTable)).EndInit();
