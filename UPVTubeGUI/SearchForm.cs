@@ -85,7 +85,7 @@ namespace UPVTubeGUI
                     ds_description = c.Description,
                     ds_isPublic = c.IsPublic ? "Yes" : "No",
                     ds_uploadDate = c.UploadDate.ToShortDateString(),
-                    ds_lastViewDate = lastView == null ? null : lastView.VisualizationDate.Date.ToString(),
+                    ds_lastViewDate = lastView == null ? null : lastView.VisualizationDate.Date.ToShortDateString(),
                     ds_relatedSubjects = string.Join(", ", c.Subjects.Select(s => s.Name)),
                 });
             }
@@ -95,20 +95,24 @@ namespace UPVTubeGUI
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            Content c = service.SearchContent(
-                startDate: startingDatePicker.MinDate,
-                endDate: startingDatePicker.MaxDate,
-                ownerNick: dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString(),
-                titleKeyword: dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString(),
-                subject: null,
-                status: statusFilter // This filter here does not change anything particular, just have to be defined.
-            ).ToList()[0];
-
-            if (c != null)
+            if (e.RowIndex >= 0)
             {
-                SingleContent singleContentForm = new SingleContent(service, c);
-                DialogResult result = singleContentForm.ShowDialog();
-                updateSearchResults(); // Updating the results, because the content could become authorized.
+                Content c = service.SearchContent(
+                    startDate: startingDatePicker.MinDate,
+                    endDate: startingDatePicker.MaxDate,
+                    ownerNick: dataGridView1.Rows[e.RowIndex].Cells["author"].Value.ToString(),
+                    titleKeyword: dataGridView1.Rows[e.RowIndex].Cells["title"].Value.ToString(),
+                    subject: null,
+                    status: statusFilter, // This filter here does not change anything particular, just have to be defined.
+                    exactTitleMatch: true
+                ).ToList()[0];
+
+                if (c != null)
+                {
+                    SingleContent singleContentForm = new SingleContent(service, c);
+                    DialogResult result = singleContentForm.ShowDialog();
+                    updateSearchResults(); // Updating the results, because the content could become authorized.
+                }
             }
         }
     }
