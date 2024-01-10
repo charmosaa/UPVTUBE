@@ -48,7 +48,7 @@ namespace UPVTubeGUI
         {
             try { 
                 service.AddReviewToPendingContent(content, null);
-                MessageBox.Show(this, "Evaluation of the content has been added.", "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(this, "Evaluation of the content has been added.\nEmail has been sent.", "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 UpdateEvaluationButtonsVisibility();
                 UpdateAuthorizationInfo();
             }

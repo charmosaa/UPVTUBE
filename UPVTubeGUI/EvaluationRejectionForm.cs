@@ -35,7 +35,7 @@ namespace UPVTubeGUI
                     throw new Exception("Give a reason of rejection");
                 }
                 service.AddReviewToPendingContent(content, this.rejectTextBox.Text);
-                MessageBox.Show(this, "Evaluation of the content has been added.", "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(this, "Evaluation of the content has been added.\nEmail has been sent.", "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Hide();
             }
             catch(Exception ex)

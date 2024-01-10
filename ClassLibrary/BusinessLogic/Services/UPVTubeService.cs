@@ -121,8 +121,6 @@ namespace UpvTube.BusinessLogic.Services
             }
             dal.Insert<Evaluation>(eval);
             dal.Commit();
-
-            // TODO: send an email to the content owner indicating the result of the review  
         }
 
         public Content DisplayContentDetails(int id)
