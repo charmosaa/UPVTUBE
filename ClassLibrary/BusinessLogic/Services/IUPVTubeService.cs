@@ -15,11 +15,15 @@ namespace UpvTube.BusinessLogic.Services
         void UploadNewContent(string contentURI, string description, bool isPublic, string title, ICollection<Subject> subjects);
         ICollection<Content> SearchContent(DateTime startDate, DateTime endDate, string ownerNick, string titleKeyword, Subject subject, Authorized? status);
         ICollection<Content> GetAllContents();
+        ICollection<Content> GetSubscribedContents();
         ICollection<Subject> GetAllSubjects();
         Visualization GetLastUserVisualization(Content content);
         Content DisplayContentDetails(int id);
         void AddReviewToPendingContent(Content content, string justification);
         void RemoveAllData();
         void DBInitialization();
+        void AddSubscription(Member creator);
+        void RemoveSubscription(Member creator);
+        Member GetLoggedUser();
     }
 }

@@ -65,5 +65,31 @@ namespace UPVTubeGUI
             UpdateEvaluationButtonsVisibility();
             UpdateAuthorizationInfo();
         }
+
+        private void subscribeButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                service.AddSubscription(content.Owner);
+                MessageBox.Show(this, "Creator added to your subscribtions.", "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch(ServiceException ex) 
+            {
+                MessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void unsubscribeButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                service.RemoveSubscription(content.Owner);
+                MessageBox.Show(this, "Creator removed from your subscribtions.", "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (ServiceException ex)
+            {
+                MessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

@@ -18,7 +18,7 @@ namespace UPVTubeGUI
         public IUPVTubeService service;
         private LogInForm logInForm;
         private RegisterForm registerForm;
-        private SearchForm searchForm;
+        protected SearchForm searchForm;
         private UPVTubeApp upvTubeApp;
         private UploadNewContentForm uploadNewContentForm;
 
