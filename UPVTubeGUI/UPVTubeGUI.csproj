@@ -95,6 +95,12 @@
     <Compile Include="SingleContent.Designer.cs">
       <DependentUpon>SingleContent.cs</DependentUpon>
     </Compile>
+    <Compile Include="SubscriptionsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubscriptionsForm.Designer.cs">
+      <DependentUpon>SubscriptionsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UploadNewContentForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -129,6 +135,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SingleContent.resx">
       <DependentUpon>SingleContent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubscriptionsForm.resx">
+      <DependentUpon>SubscriptionsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UPVTubeApp.resx">
       <DependentUpon>UPVTubeApp.cs</DependentUpon>

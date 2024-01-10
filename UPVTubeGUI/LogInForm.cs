@@ -14,6 +14,7 @@ namespace UPVTubeGUI
 {
     public partial class LogInForm : UPVTubeBase
     {
+        SubscriptionsForm subscriptionsForm;
         public LogInForm(IUPVTubeService service): base(service)
         {
             InitializeComponent();
@@ -35,6 +36,11 @@ namespace UPVTubeGUI
             {
                 service.Login(nickInput.Text, passwordInput.Text);
                 DialogResult answer = MessageBox.Show(this, "User logged in", "info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Hide();
+                subscriptionsForm = new SubscriptionsForm(service);
+                subscriptionsForm.ShowDialog();
+                this.Close();
+            
             }
             catch(ServiceException ex)
             {

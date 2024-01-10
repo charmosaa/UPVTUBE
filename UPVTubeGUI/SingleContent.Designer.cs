@@ -35,6 +35,8 @@
             this.evaluationAcceptButton = new System.Windows.Forms.Button();
             this.evaluationRejectButton = new System.Windows.Forms.Button();
             this.authLabel = new System.Windows.Forms.Label();
+            this.subscribeButton = new System.Windows.Forms.Button();
+            this.unsubscribeButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // contentTitle
@@ -105,11 +107,33 @@
             this.authLabel.TabIndex = 10;
             this.authLabel.Text = "Content is not authorized";
             // 
+            // subscribeButton
+            // 
+            this.subscribeButton.Location = new System.Drawing.Point(472, 87);
+            this.subscribeButton.Name = "subscribeButton";
+            this.subscribeButton.Size = new System.Drawing.Size(166, 41);
+            this.subscribeButton.TabIndex = 11;
+            this.subscribeButton.Text = "Subscribe";
+            this.subscribeButton.UseVisualStyleBackColor = true;
+            this.subscribeButton.Click += new System.EventHandler(this.subscribeButton_Click);
+            // 
+            // unsubscribeButton
+            // 
+            this.unsubscribeButton.Location = new System.Drawing.Point(472, 134);
+            this.unsubscribeButton.Name = "unsubscribeButton";
+            this.unsubscribeButton.Size = new System.Drawing.Size(166, 43);
+            this.unsubscribeButton.TabIndex = 12;
+            this.unsubscribeButton.Text = "Unsubscribe";
+            this.unsubscribeButton.UseVisualStyleBackColor = true;
+            this.unsubscribeButton.Click += new System.EventHandler(this.unsubscribeButton_Click);
+            // 
             // SingleContent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.unsubscribeButton);
+            this.Controls.Add(this.subscribeButton);
             this.Controls.Add(this.authLabel);
             this.Controls.Add(this.evaluationRejectButton);
             this.Controls.Add(this.evaluationAcceptButton);
@@ -119,13 +143,6 @@
             this.Controls.Add(this.contentTitle);
             this.Name = "SingleContent";
             this.Text = "SingleContent";
-            this.Controls.SetChildIndex(this.contentTitle, 0);
-            this.Controls.SetChildIndex(this.contentDetails, 0);
-            this.Controls.SetChildIndex(this.contentDescription, 0);
-            this.Controls.SetChildIndex(this.contentUrl, 0);
-            this.Controls.SetChildIndex(this.evaluationAcceptButton, 0);
-            this.Controls.SetChildIndex(this.evaluationRejectButton, 0);
-            this.Controls.SetChildIndex(this.authLabel, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -140,5 +157,7 @@
         private System.Windows.Forms.Button evaluationAcceptButton;
         private System.Windows.Forms.Button evaluationRejectButton;
         private System.Windows.Forms.Label authLabel;
+        private System.Windows.Forms.Button subscribeButton;
+        private System.Windows.Forms.Button unsubscribeButton;
     }
 }

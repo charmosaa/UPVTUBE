@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Diagnostics.Eventing.Reader;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
+using System.Runtime.Remoting.Contexts;
 using UPVTube.Entities;
 using UPVTube.Persistence;
 using UPVTube.Services;
@@ -123,6 +125,24 @@ namespace UpvTube.BusinessLogic.Services
             dal.Commit();
         }
 
+        public void AddSubscription(Member creator)
+        {
+            if(!isUPVMemberLogged())
+                throw new ServiceException("You are not a UPV member. \nYou can not subscribe!");
+            if (logged.SubscribedTo.Contains(creator))
+                throw new ServiceException("You already subscribe to this user!");
+            logged.SubscribedTo.Add(creator);
+            creator.Subscriptors.Add(logged);
+        }
+
+        public void RemoveSubscription(Member creator)
+        {
+            if (!logged.SubscribedTo.Contains(creator))
+                throw new ServiceException("You do not subscribe to this user!");
+            logged.SubscribedTo.Remove(creator);
+            creator.Subscriptors.Remove(logged);
+        }
+
         public Content DisplayContentDetails(int id)
         {
             if (logged == null)
@@ -190,6 +210,19 @@ namespace UpvTube.BusinessLogic.Services
         public ICollection<Content> GetAllContents()
         {
             return dal.GetAll<Content>().ToList();
+        }
+
+        public ICollection<Content> GetSubscribedContents()
+        {
+            IEnumerable<Content> contents = GetAllContents();
+            contents = contents.Where<Content>(c => c.Authorized == 0);
+            if (logged.LastAccessDate != null)
+            {
+                contents = contents.Where(c => c.UploadDate.Date >= logged.LastAccessDate.Date);
+            }
+            contents = contents.Where<Content>(content => logged.SubscribedTo.Contains(content.Owner));
+
+            return contents.ToList();
         }
 
         public ICollection<Content> SearchContent(DateTime startDate, DateTime endDate, string ownerNick, string titleKeyword, Subject subject, Authorized? status, bool exactTitleMatch = false)
@@ -312,5 +345,10 @@ namespace UpvTube.BusinessLogic.Services
             dal.Insert(newContent);
             dal.Commit();
         }
+        public Member GetLoggedUser()
+        {
+            return logged;
+        }
+
     }
 }
