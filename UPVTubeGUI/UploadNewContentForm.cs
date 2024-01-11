@@ -76,11 +76,13 @@ namespace UPVTubeGUI
             }
         }
 
-        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void checkedListBox1_ItemCheck(object sender, ItemCheckEventArgs e)
         {
             int selectedCount = checkedListBox1.CheckedItems.Count;
-            if (selectedCount > 3)
+
+            if (e.NewValue == CheckState.Checked && selectedCount >= 3)
             {
+                e.NewValue = CheckState.Unchecked;
                 MessageBox.Show("You can only select up to 3 subjects.", "Subjects selection limit", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
