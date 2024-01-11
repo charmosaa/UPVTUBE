@@ -22,12 +22,12 @@ namespace UPVTubeGUI
 
         private void InitializeSubjectsListBox()
         {
-            subjectsListBox.DisplayMember = "Name";
-            subjectsListBox.ValueMember = "Code";
+            checkedListBox1.DisplayMember = "Name";
+            checkedListBox1.ValueMember = "Code";
 
             foreach (var s in service.GetAllSubjects())
             {
-                subjectsListBox.Items.Add(s);
+                checkedListBox1.Items.Add(s);
             }
         }
 
@@ -37,21 +37,9 @@ namespace UPVTubeGUI
             descriptionInput.Text = "";
             uriInput.Text = "";
             isPublicCheckbox.Checked = false;
-            subjectsListBox.ClearSelected();
+            checkedListBox1.ClearSelected();
         }
 
-        private void subjectsListBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            int selectedCount = subjectsListBox.SelectedItems.Count;
-            if (selectedCount > 3)
-            {
-                // Get the last selected subject and unselect it
-                Subject lastSelectedItem = (Subject)subjectsListBox.SelectedItems[selectedCount - 1];
-                subjectsListBox.SetSelected(subjectsListBox.Items.IndexOf(lastSelectedItem), false);
-
-                MessageBox.Show("You can only select up to 3 subjects.", "Subjects selection limit", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
 
         private void addNewContentButton_Click(object sender, EventArgs e)
         {
@@ -61,7 +49,7 @@ namespace UPVTubeGUI
             string title = titleInput.Text;
 
             List<Subject> selectedSubjects = new List<Subject>();
-            foreach (var s in subjectsListBox.SelectedItems)
+            foreach (var s in checkedListBox1.CheckedItems)
             {
                 selectedSubjects.Add((Subject)s);
             }
@@ -77,7 +65,7 @@ namespace UPVTubeGUI
                 else if (result == DialogResult.No)
                 {
                     this.Hide();
-                    SearchForm searchForm = new SearchForm(service);
+                    SearchForm searchForm = new SearchForm(service, UPVTube.Entities.Authorized.Yes);
                     searchForm.ShowDialog();
                     this.Close();
                 }
@@ -85,6 +73,15 @@ namespace UPVTubeGUI
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int selectedCount = checkedListBox1.CheckedItems.Count;
+            if (selectedCount > 3)
+            {
+                MessageBox.Show("You can only select up to 3 subjects.", "Subjects selection limit", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }
