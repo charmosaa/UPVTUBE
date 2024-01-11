@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UpvTube;
 using UpvTube.BusinessLogic.Services;
 using UPVTube.Entities;
 using UPVTube.Services;
@@ -30,15 +31,15 @@ namespace UPVTubeGUI
         {
             try
             {
-                if(this.rejectTextBox.Text.Length ==  0)
+                if (this.rejectTextBox.Text.Length == 0)
                 {
-                    throw new Exception("Give a reason of rejection");
+                    throw new Exception(Messages.ErrorNoReasonOfRejection);
                 }
                 service.AddReviewToPendingContent(content, this.rejectTextBox.Text);
-                MessageBox.Show(this, "Evaluation of the content has been added.\nEmail has been sent.", "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(this, Messages.InfoEvaluationAddSuccess, "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Hide();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

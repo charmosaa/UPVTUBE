@@ -62,10 +62,10 @@ namespace UpvTube.BusinessLogic.Services
                     dal.Commit();
                 }
                 else
-                    throw new ServiceException("Subject with name " + subject.Name + " already exists.");
+                    throw new ServiceException(string.Format(Messages.ErrorSubjectNameAlreadyExists, subject.Name));
             }
             else
-                throw new ServiceException("Subject with code " + subject.Code + " already exists.");
+                throw new ServiceException(string.Format(Messages.ErrorSubjectCodeAlreadyExists, subject.Code));
         }
 
         public void DBInitialization()
@@ -102,12 +102,12 @@ namespace UpvTube.BusinessLogic.Services
         {
             if (logged == null)
             {
-                throw new ServiceException("Unathorized");
+                throw new ServiceException(Messages.ErrorUnauthorized);
             }
 
             if (!Domains.IsTeacherDomain(logged.Email))
             {
-                throw new ServiceException("You don't have the permissions to review content.");
+                throw new ServiceException(Messages.ErrorNoPermissions);
             }
 
             Evaluation eval = new Evaluation(DateTime.Now, justification, logged, content);
@@ -127,10 +127,10 @@ namespace UpvTube.BusinessLogic.Services
 
         public void AddSubscription(Member creator)
         {
-            if(!isUPVMemberLogged())
-                throw new ServiceException("You are not a UPV member. \nYou can not subscribe!");
+            if (!isUPVMemberLogged())
+                throw new ServiceException(Messages.ErrotNoUPVMemberCannotSubscribe);
             if (logged.SubscribedTo.Contains(creator))
-                throw new ServiceException("You already subscribe to this user!");
+                throw new ServiceException(Messages.ErrorAlreadySubscribed);
             logged.SubscribedTo.Add(creator);
             creator.Subscriptors.Add(logged);
         }
@@ -138,7 +138,7 @@ namespace UpvTube.BusinessLogic.Services
         public void RemoveSubscription(Member creator)
         {
             if (!logged.SubscribedTo.Contains(creator))
-                throw new ServiceException("You do not subscribe to this user!");
+                throw new ServiceException(Messages.ErrorAlreadyUnsubscribed);
             logged.SubscribedTo.Remove(creator);
             creator.Subscriptors.Remove(logged);
         }
@@ -147,14 +147,14 @@ namespace UpvTube.BusinessLogic.Services
         {
             if (logged == null)
             {
-                throw new ServiceException("Unauthorized");
+                throw new ServiceException(Messages.ErrorUnauthorized);
             }
 
             Content content = dal.GetById<Content>(id);
 
             if (content == null)
             {
-                throw new ServiceException("Content with id " + id + " does not exists.");
+                throw new ServiceException(string.Format(Messages.ErrorContentWithIdDoesNotExist, id));
             }
 
             return content;
@@ -164,7 +164,7 @@ namespace UpvTube.BusinessLogic.Services
         {
             if (logged != null)
             {
-                throw new ServiceException("User is already logged in.");
+                throw new ServiceException(Messages.ErrorUserAlreadyLoggedIn);
             }
 
             Member memberToBeLogged = dal.GetWhere<Member>((member) => member.Nick == nick && member.Password == password).FirstOrDefault();
@@ -172,14 +172,14 @@ namespace UpvTube.BusinessLogic.Services
             {
                 logged = memberToBeLogged;
             }
-            else throw new ServiceException("Wrong login credentials");
+            else throw new ServiceException(Messages.ErrorWrongLoginCreadentials);
         }
 
         public void Logout()
         {
             if (logged == null)
             {
-                throw new ServiceException("No member is logged.");
+                throw new ServiceException(Messages.ErrorNoUserLoggedIn);
             }
 
             logged.LastAccessDate = DateTime.Now;
@@ -191,14 +191,14 @@ namespace UpvTube.BusinessLogic.Services
         public void RegisterNewUser(string email, string fullname, string nick, string password)
         {
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(fullname) || string.IsNullOrEmpty(nick) || string.IsNullOrEmpty(password))
-                throw new ServiceException("Some data is missing - insert all the fields");
+                throw new ServiceException(Messages.ErrorDataMissing);
             else
             {
                 if (dal.GetWhere<Member>((member) => member.Nick == nick).Count() > 0)
-                    throw new ServiceException("Member with this nick already exists.");
+                    throw new ServiceException(Messages.ErrorMemberNickAlreadyExists);
 
                 else if (dal.GetWhere<Member>((member) => member.Email == email).Count() > 0)
-                    throw new ServiceException("Member with this email already exists.");
+                    throw new ServiceException(Messages.ErrorMemberEmailAlreadyExists);
                 else
                 {
                     dal.Insert<Member>(new Member(email, fullname, DateTime.Now, nick, password));
@@ -229,7 +229,7 @@ namespace UpvTube.BusinessLogic.Services
         {
             if (logged == null)
             {
-                throw new ServiceException("Unathorized");
+                throw new ServiceException(Messages.ErrorUnauthorized);
             }
 
             IEnumerable<Content> contents = dal.GetAll<Content>();
@@ -290,11 +290,11 @@ namespace UpvTube.BusinessLogic.Services
         {
             if (logged == null)
             {
-                throw new ServiceException("Unathorized");
+                throw new ServiceException(Messages.ErrorUnauthorized);
             }
             else if (content == null)
             {
-                throw new ServiceException("Cannot register a visualization for a null content");
+                throw new ServiceException(Messages.ErrorNullContentVisualization);
             }
             Visualization newView = new Visualization(DateTime.Now, content, logged);
             content.Visualizations.Add(newView);
@@ -315,27 +315,27 @@ namespace UpvTube.BusinessLogic.Services
         {
             if (logged == null)
             {
-                throw new ServiceException("You have to be logged in.");
+                throw new ServiceException(Messages.ErrorHaveToBeLoggedIn);
             }
 
             if (!Domains.IsUPVMemberDomain(logged.Email))
             {
-                throw new ServiceException("You have to be a UPV member.");
+                throw new ServiceException(Messages.ErrorHaveToBeUPVMember);
             }
 
             if (subjects.Count() > 3)
             {
-                throw new ServiceException("You can't add more than 3 subjects.");
+                throw new ServiceException(Messages.ErrorMoreThan3Subjects);
             }
 
             if (contentURI == null || contentURI == "")
             {
-                throw new ServiceException("Content URI can't be empty.");
+                throw new ServiceException(Messages.ErrorURIEmpty);
             }
 
             if (title == null || title == "")
             {
-                throw new ServiceException("Title can't be empty");
+                throw new ServiceException(Messages.ErrorTitleEmpty);
             }
 
             Content newContent = new Content(contentURI, description, isPublic, title, DateTime.Now, logged);
