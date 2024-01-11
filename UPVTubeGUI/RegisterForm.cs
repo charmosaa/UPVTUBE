@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UpvTube;
 using UpvTube.BusinessLogic.Services;
 using UPVTube.Services;
 
@@ -33,8 +34,8 @@ namespace UPVTubeGUI
         {
             try
             {
-                service.RegisterNewUser(emailTextBox.Text,fullNameTextBox.Text,nickTextBox.Text, passwordTextBox.Text);
-                DialogResult answer = MessageBox.Show(this, "user registered", "info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                service.RegisterNewUser(emailTextBox.Text, fullNameTextBox.Text, nickTextBox.Text, passwordTextBox.Text);
+                DialogResult answer = MessageBox.Show(this, Messages.InfoRegisterSuccess, "info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 base.goToLogIn();
             }
             catch (ServiceException ex)

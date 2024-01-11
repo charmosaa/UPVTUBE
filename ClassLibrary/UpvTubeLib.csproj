@@ -60,6 +60,7 @@
     <Compile Include="BusinessLogic\Services\ServiceException.cs" />
     <Compile Include="BusinessLogic\Services\UPVTubeService.cs" />
     <Compile Include="BusinessLogic\Services\IUPVTubeService.cs" />
+    <Compile Include="Messages.cs" />
     <Compile Include="Persistence\Entities\Authorized.cs" />
     <Compile Include="Persistence\EntityFrameworkImp\DbContextISW.cs" />
     <Compile Include="Persistence\EntityFrameworkImp\EntityFrameworkDAL.cs" />

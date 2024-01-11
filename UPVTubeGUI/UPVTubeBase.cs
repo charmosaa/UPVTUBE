@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UpvTube;
 using UpvTube.BusinessLogic.Services;
 using UPVTube.Services;
 
@@ -49,7 +50,7 @@ namespace UPVTubeGUI
             try
             {
                 service.DBInitialization();
-                MessageBox.Show(this, "Database has been initialized", "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(this, Messages.InfoDBInitialized, "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (ServiceException ex)
             {
@@ -83,7 +84,7 @@ namespace UPVTubeGUI
             {
                 service.Logout();
                 UpdateMenuBarVisibility();
-                MessageBox.Show(this, "You have been logged out", "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(this, Messages.InfoLoggedOut, "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 goToLogIn();
             }
             catch (ServiceException ex)
@@ -98,7 +99,7 @@ namespace UPVTubeGUI
             {
                 service.RemoveAllData();
                 UpdateMenuBarVisibility();
-                MessageBox.Show(this, "Database has been cleared", "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(this, Messages.InfoDBCleared, "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Hide();
                 upvTubeApp = new UPVTubeApp(service);
                 upvTubeApp.ShowDialog();

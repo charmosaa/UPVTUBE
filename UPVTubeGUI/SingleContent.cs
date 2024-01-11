@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UpvTube;
 using UpvTube.BusinessLogic.Services;
 using UPVTube.Entities;
 using UPVTube.Services;
@@ -28,7 +29,7 @@ namespace UPVTubeGUI
 
         private void UpdateAuthorizationInfo()
         {
-            this.authLabel.Text = content.Authorized == Authorized.Yes ? "Content is authorized" : "Content is not authorized";
+            this.authLabel.Text = content.Authorized == Authorized.Yes ? Messages.InfoContentIsAuthorized : Messages.InfoContentIsNotAuthorized;
         }
 
         public SingleContent(IUPVTubeService service, Content content)
@@ -47,13 +48,14 @@ namespace UPVTubeGUI
 
         private void evaluationButton_Click(object sender, EventArgs e)
         {
-            try { 
+            try
+            {
                 service.AddReviewToPendingContent(content, null);
-                MessageBox.Show(this, "Evaluation of the content has been added.\nEmail has been sent.", "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(this, Messages.InfoEvaluationAddSuccess, "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 UpdateEvaluationButtonsVisibility();
                 UpdateAuthorizationInfo();
             }
-            catch(ServiceException ex)
+            catch (ServiceException ex)
             {
                 MessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -72,9 +74,9 @@ namespace UPVTubeGUI
             try
             {
                 service.AddSubscription(content.Owner);
-                MessageBox.Show(this, "Creator added to your subscribtions.", "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(this, Messages.InfoCreatorSubscribed, "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch(ServiceException ex) 
+            catch (ServiceException ex)
             {
                 MessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -85,7 +87,7 @@ namespace UPVTubeGUI
             try
             {
                 service.RemoveSubscription(content.Owner);
-                MessageBox.Show(this, "Creator removed from your subscribtions.", "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(this, Messages.InfoCreatorUnsubscribed, "System", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (ServiceException ex)
             {

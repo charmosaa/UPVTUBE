@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UpvTube;
 using UpvTube.BusinessLogic.Services;
 using UPVTube.Entities;
 
@@ -57,7 +58,7 @@ namespace UPVTubeGUI
             try
             {
                 service.UploadNewContent(contentURI, description, isPublic, title, selectedSubjects);
-                DialogResult result = MessageBox.Show("New Content Uploaded Successfully!\nWould you like to add another one?\nIf not, the content list will open.", "Success", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                DialogResult result = MessageBox.Show(Messages.InfoUploadContentSuccess, "Success", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                 if (result == DialogResult.Yes)
                 {
                     ClearInputs();
@@ -83,7 +84,7 @@ namespace UPVTubeGUI
             if (e.NewValue == CheckState.Checked && selectedCount >= 3)
             {
                 e.NewValue = CheckState.Unchecked;
-                MessageBox.Show("You can only select up to 3 subjects.", "Subjects selection limit", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(Messages.ErrorMoreThan3Subjects, "Subjects selection limit", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }

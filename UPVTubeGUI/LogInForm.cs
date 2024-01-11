@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UpvTube;
 using UpvTube.BusinessLogic.Services;
 using UPVTube.Services;
 
@@ -15,7 +16,7 @@ namespace UPVTubeGUI
     public partial class LogInForm : UPVTubeBase
     {
         SubscriptionsForm subscriptionsForm;
-        public LogInForm(IUPVTubeService service): base(service)
+        public LogInForm(IUPVTubeService service) : base(service)
         {
             InitializeComponent();
             this.KeyPress += LoginForm_EnterPress;
@@ -35,14 +36,14 @@ namespace UPVTubeGUI
             try
             {
                 service.Login(nickInput.Text, passwordInput.Text);
-                DialogResult answer = MessageBox.Show(this, "User logged in", "info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                DialogResult answer = MessageBox.Show(this, Messages.InfoLoginSuccess, "info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Hide();
                 subscriptionsForm = new SubscriptionsForm(service);
                 subscriptionsForm.ShowDialog();
                 this.Close();
-            
+
             }
-            catch(ServiceException ex)
+            catch (ServiceException ex)
             {
                 DialogResult answer = MessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
