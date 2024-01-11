@@ -12,7 +12,7 @@ namespace UpvTube.BusinessLogic.Services
 {
     public class UPVTubeService : IUPVTubeService
     {
-
+        // Final deliverable
         private readonly IDAL dal;
         private Member logged;
 
